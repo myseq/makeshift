@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Citrus Family Encyclopedia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>The Citrus Family Encyclopedia</h1>
+        <p>Explore the fascinating world of ancestral citrus fruits and their famous hybrids.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to the Citrus Hub</h2>
+            <dd>
+            <p>The <i>Rutaceae</i> family is incredibly diverse, stemming from a few ancient wild ancestors. Select a fruit below to dive deep into its history, unique characteristics, varieties, and cultural significance.</p>
+            </dd>
+        </section>
+
+        <!-- Navigation Dashboard -->
+        <section class="citrus-grid">
+            <h2>Explore the Varieties</h2>
+            <div class="grid-container">
+                <div class="citrus-card">
+                    <h3>Mandarin Orange</h3>
+                    <dd>
+                    <p>The sweet, loose-skinned favorite and a true core ancestor of modern citrus.</p>
+                    <a href="mandarin.html" class="citrus-link">Read Guide &rarr;</a>
+                    </dd>
+                </div>
+
+                <div class="citrus-card">
+                    <h3>Citron</h3>
+                    <dd>
+                    <p>An ancient, highly fragrant core ancestor prized primarily for its thick rind.</p>
+                    <a href="citron.html" class="citrus-link">Read Guide &rarr;</a>
+                    </dd>
+                </div>
+
+                <div class="citrus-card">
+                    <h3>Pomelo</h3>
+                    <dd>
+                    <p>The giant of the citrus world with a remarkably mild and sweet flavor profile.</p>
+                    <a href="pomelo.html" class="citrus-link">Read Guide &rarr;</a>
+                    </dd>
+                </div>
+
+                <div class="citrus-card">
+                    <h3>Papeda</h3>
+                    <dd>
+                    <p>A primitive, wild lineage famous for its deeply aromatic culinary leaves.</p>
+                    <a href="papeda.html" class="citrus-link">Read Guide &rarr;</a>
+                    </dd>
+                </div>
+
+                <div class="citrus-card">
+                    <h3>Lemon</h3>
+                    <dd>
+                    <p>The global culinary powerhouse known for its bright, sharply acidic punch.</p>
+                    <a href="lemon.html" class="citrus-link">Read Guide &rarr;</a>
+                    </dd>
+                </div>
+
+                <div class="citrus-card">
+                    <h3>Lime</h3>
+                    <dd>
+                    <p>A zesty tropical hybrid that brings an herbal brightness to dishes and drinks.</p>
+                    <a href="lime.html" class="citrus-link">Read Guide &rarr;</a>
+                    </dd>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p><i>&copy; 2026 Citrus Educational Guide Hub</i></p>
+    </footer>
+
+     <script>
+        let wakeLock = null;
+
+        async function requestWakeLock() {
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                document.getElementById('lock-state').className = "active";
+
+                wakeLock.addEventListener('release', () => {
+                    document.getElementById('lock-state').className = "";
+                });
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        }
+
+        // Request lock on page load
+        requestWakeLock();
+
+        // Re-request if user switches back to the tab
+        document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+                await requestWakeLock();
+            }
+        });
+    </script>
+
+</body>
+</html>
+
