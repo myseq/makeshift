@@ -79,6 +79,41 @@ html:has(#mode_dark:checked) label[for="mode_dark"] {
 }
 
 h1, h2, h3 { color: var(--header); }
+
+a[href]::before {
+    content: "🔗 ";
+    font-style: normal; /* Prevents the emoji from becoming italic if the text is italic */
+    text-decoration: none; /* Prevents the emoji from getting an underline */
+    display: inline-block;
+}
 a, a:visited { color: var(--accent); text-decoration: none; font-weight:bold; }
 a:hover { color: var(--accent); text-decoration: underline; font-weight:bold; }
+
+/* 1. Default fallback emoji for generic links */
+a[href]::before {
+    content: "🔗 ";
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* 2. External website links (links that start with http or https) */
+a[href^="http"]::before {
+    content: "🌐 ";
+}
+
+/* 3. Secure internal or external dashboard paths containing "admin" or "secure" */
+a[href*="admin"]::before,
+a[href*="dashboard"]::before {
+    content: "🔒 ";
+}
+
+/* 4. Email links (links starting with mailto:) */
+a[href^="mailto:"]::before {
+    content: "✉️ ";
+}
+
+/* 5. Download links targeting PDF files (links ending in .pdf) */
+a[href$=".pdf"]::before {
+    content: "📄 ";
+}
 
