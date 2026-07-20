@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🐙</title>
+    <title></title>
     <style>
         body {
             font-family: Verdana, Arial, sans-serif;
@@ -26,44 +26,9 @@
 </head>
 <body>
 
-    <div id="status">
-        Status: <span id="lock-state">💤 </span>
-    </div>
-    <center><i>
-    <b><p>Burning the candle at both ends</p></b>
-    <p>or</p>
-    <p>Catching forty winks!!</p>    
-    </i></center>
+<ol>
+    <li><a href="https://makeshift.pages.dev/cyber/caught_you">Caught You!</a></li>
+</ol>
 
-    <script>
-        let wakeLock = null;
-
-        async function requestWakeLock() {
-            try {
-                wakeLock = await navigator.wakeLock.request('screen');
-                document.title = "☕";
-                document.getElementById('lock-state').textContent = "Active ☕ (coffee)";
-                document.getElementById('lock-state').className = "active";
-                
-                wakeLock.addEventListener('release', () => {
-                    document.title = "💤";
-                    document.getElementById('lock-state').textContent = "Inactive 💤 (ZZZ)";
-                    document.getElementById('lock-state').className = "";
-                });
-            } catch (err) {
-                console.error(`${err.name}, ${err.message}`);
-            }
-        }
-
-        // Request lock on page load
-        requestWakeLock();
-
-        // Re-request if user switches back to the tab
-        document.addEventListener('visibilitychange', async () => {
-            if (wakeLock !== null && document.visibilityState === 'visible') {
-                await requestWakeLock();
-            }
-        });
-    </script>
 </body>
 </html>
