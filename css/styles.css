@@ -36,8 +36,10 @@ input, textarea, button, select {
     color: inherit;
 }
 
-a:link, a:visited { text-decoration: none; font-style: italic; }
-a:hover { text-decoration: underline; font-weight: bold; }
+a:hover { color: #84cc16; text-decoration: underline; font-weight:bold; }
+
+a:link, a:visited { text-decoration: none; font-weight: bold; }
+a:hover { color: #ffd800; text-decoration: underline; font-weight: bold; }
 
 .bordered-div {
     border-width: 3px;
