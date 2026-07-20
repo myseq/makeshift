@@ -17,7 +17,7 @@
 html:has(#mode_dark:checked) {
     /* Dark Mode Colors */
     --bg-page: #303030;  /* #121212; */
-    --bg-card: #1e1e1e;
+    --bg-card: #3e3e3e;  /* #1e1e1e; */
     --fg-main: #e0e0e0;  /* #f0f0f0; */
     --accent:  #a4d8ff;  /* #4da6ff; */
 }
@@ -72,4 +72,6 @@ html:has(#mode_dark:checked) label[for="mode_dark"] {
     color: var(--bg-page);
 }
 
+a, a:visited { text-decoration: none; font-weight:bold; }
+a:hover { color: --accent; text-decoration: underline; font-weight:bold; }
 
