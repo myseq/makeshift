@@ -2,31 +2,32 @@
 
 
 /* 1. DEFINE THEME VARIABLES */
-:root {
-    /* Light Mode Default Colors */
-    --bg-page: #ffffff;
-    --bg-card: #f4f4f4;
-    --fg-main: #333333;
-    --accent: #0066cc;
-    
-    /* Smooth transition for theme switching */
-    --theme-transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* 2. TRIGGER DARK MODE VARIABLES USING :HAS() */
-html:has(#mode_dark:checked) {
+:root { /* Dark Mode Default Colors */
     /* Dark Mode Colors */
     --bg-page: #303030;  /* #121212; */
     --bg-card: #3e3e3e;  /* #1e1e1e; */
     --fg-main: #e0e0e0;  /* #f0f0f0; */
     --accent:  #a4d8ff;  /* #4da6ff; */
+    
+    /* Smooth transition for theme switching */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 2. TRIGGER Light MODE VARIABLES USING :HAS() */
+html:has(#mode_light:checked) {
+    --bg-page: #ffffff;
+    --bg-card: #f4f4f4;
+    --fg-main: #333333;
+    --accent: #0066cc;
 }
 
 /* 3. APPLY VARIABLES TO GLOBAL ELEMENTS */
 body {
     background-color: var(--bg-page);
     color: var(--fg-main);
-    font-family: system-ui, -apple-system, sans-serif;
+    /* font-family: system-ui, -apple-system, sans-serif; */
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(1rem, 0.5rem + 1.5vw, 1.125rem); /* Scales smoothly from 16px to 18px */
     margin: 0;
     padding: 2rem;
     transition: var(--theme-transition);
