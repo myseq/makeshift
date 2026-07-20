@@ -22,7 +22,7 @@ html:has(#mode_light:checked) {
     --bg-page: #ffffff;
     --bg-card: #f4f4f4;
     --fg-main: #333333;
-    --accent: #0066cc;
+    --accent: #0066ff;
     --header: #121212;
 }
 
