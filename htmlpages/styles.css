@@ -1,24 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
-body {
-    box-sizing: border-box;
-    max-width: 70ch;
-    margin: auto;
-    line-height: 1.4;
-
-    font-family: 'Fira Code', monospace;
-    font-size: clamp(1rem, 0.5rem + 1.5vw, 1.125rem); /* Scales smoothly from 16px to 18px */
-
-    /* Use a clean, soft off-white or light gray for general body text */
-    color: #e0e0e0;
-    counter-reset: h2-count h3-count;
-}
-
-h1, strong { color: #FFD800; /* Sunglow */ }
-h2, h3     { color: #C1FE1A; /* chartreuse */ }
-a          { color: #A4D8FF /* Icy Blue */ }
-
-
 
 /* 1. DEFINE THEME VARIABLES */
 :root {
