@@ -28,12 +28,15 @@ html:has(#mode_light:checked) {
 
 /* 3. APPLY VARIABLES TO GLOBAL ELEMENTS */
 body {
+    max-width: 70ch;
+    margin: auto;
+    line-height: 1.4;
+
     background-color: var(--bg-page);
     color: var(--fg-main);
     /* font-family: system-ui, -apple-system, sans-serif; */
     font-family: 'Fira Code', monospace;
     font-size: clamp(1rem, 0.5rem + 1.5vw, 1.125rem); /* Scales smoothly from 16px to 18px */
-    margin: 0;
     padding: 2rem;
     transition: var(--theme-transition);
 }
