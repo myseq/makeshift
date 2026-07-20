@@ -72,6 +72,6 @@ html:has(#mode_dark:checked) label[for="mode_dark"] {
     color: var(--bg-page);
 }
 
-a, a:visited { text-decoration: none; font-weight:bold; }
-a:hover { color: --accent; text-decoration: underline; font-weight:bold; }
+a, a:visited { color: var(--accent); text-decoration: none; font-weight:bold; }
+a:hover { color: var(--accent); text-decoration: underline; font-weight:bold; }
 
