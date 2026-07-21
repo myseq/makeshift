@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Custom Properties Display</title>
+    <style>
+        /* 1. DEFINE VARIABLES */
+        :root {
+            --accent-color: #ff5722;
+            --font-size-badge: 0.85rem;
+            --spacing-padding: 0.3rem 0.6rem;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 2rem;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        /* 2. USE CSS VARIABLES TO DISPLAY HTML ATTRIBUTE DATA */
+        .badge::after {
+            /* The attr() function extracts data-label from the HTML string */
+            content: " [" attr(data-label) "]"; 
+            
+            /* Applying global custom property variables */
+            color: var(--accent-color);
+            font-size: var(--font-size-badge);
+            font-weight: bold;
+        }
+
+        /* Another example: Tooltip box powered entirely by an HTML attribute via CSS */
+        .info-box::before {
+            content: "Notice: " attr(data-tooltip);
+            display: block;
+            background-color: #333;
+            color: #fff;
+            padding: var(--spacing-padding);
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border-left: 5px solid var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The data text is stored cleanly inside the HTML attributes -->
+    <div class="info-box" data-tooltip="This entire text box string is generated and styled via CSS properties!"></div>
+
+    <h2>Project Inventory List</h2>
+    <ul>
+        <li>Main Server <span class="badge" data-label="Status: Operational"></span></li>
+        <li>Database Cluster <span class="badge" data-label="Status: Backup Mode"></span></li>
+        <li>Frontend Client <span class="badge" data-label="Version 2.4.1"></span></li>
+    </ul>
+
+</body>
+</html>
+
