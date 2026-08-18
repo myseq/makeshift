@@ -15,5 +15,40 @@ Here is what each variable typically controls:
  * `--error`: Colors for warning messages or form errors.
  * `--border`: Lines that separate sections or outline cards.
 
+## Header
+
+<div class="special-class" markdown="1">
+1. All
+1. Fixed
+1. Up
+</div>
+
+## Paragraph
+
+1. one paragraph
+
+    more for 1st list item :)
+
+1. another paragraph
+
+
+## Others
+
+> First bit
+
+> Second bit
+
+```css
+body {
+  background: red;
+}
+```
+
+| header | header | header |
+|--------|:------:|-------:|
+| a      |    b   |      c |
+| 1      |    2   |      3 |
+| foo    |   bar  |    baz |
+
 
 
