@@ -65,7 +65,7 @@ code {
     font-family: 'Fira Code', monospace;
     color: #c1fe1a; /* chartreuse */
     background-color: var(--card-bg);
-    padding: 1.25rem;
+    padding: 1.1rem;
 }
 
 .language-css {
