@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <title>Passkeys2026</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #ffd800;
+      --accent-hover: #ea580c;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #22c55e;
+      --error: #ef4444;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      color: #38bdf8;
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .question-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .question-card.has-error {
+      border-color: var(--error);
+    }
+
+    .question-card.is-correct {
+      border-color: var(--success);
+    }
+
+    .question-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .options {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-color);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+      flex: 1;
+    }
+
+    .options label:hover {
+      border-color: var(--accent);
+    }
+
+    .hint-box {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      background-color: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--error);
+      color: #fca5a5;
+      font-size: 0.95rem;
+    }
+
+    .hint-box.show {
+      display: block;
+    }
+
+    .success-box {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      background-color: rgba(34, 197, 94, 0.1);
+      border-left: 4px solid var(--success);
+      color: #86efac;
+      font-size: 0.95rem;
+    }
+
+    .success-box.show {
+      display: block;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--accent);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .banner-result {
+      display: none;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .banner-result.success {
+      display: block;
+      background-color: var(--success);
+      color: #052e16;
+    }
+
+    .banner-result.error {
+      display: block;
+      background-color: var(--error);
+      color: #450a0a;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Cybersecurity Month</h1>
+    <p>Passkey Awareness Quiz · Oct 2026</p>
+  </header>
+
+  <form id="quizForm">
+    <!-- Part 1 -->
+    <div class="section-title">Part 1 — Why Passwords Let Us Down</div>
+
+    <div class="question-card" id="card-q1">
+      <div class="question-text">Q1. Reusing the same password across multiple websites is safe, as long as the password is long and complex.</div>
+      <div class="options">
+        <label><input type="radio" name="q1" value="True"> True</label>
+        <label><input type="radio" name="q1" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q1">💡 <strong>Hint:</strong> Length and complexity don't help if one site is breached — attackers take that leaked password and try it everywhere else (credential stuffing).</div>
+      <div class="success-box" id="succ-q1">✓ Correct!</div>
+    </div>
+
+    <div class="question-card" id="card-q2">
+      <div class="question-text">Q2. A password only protects you if it stays secret — the moment someone else learns it, they can log in as you from anywhere in the world.</div>
+      <div class="options">
+        <label><input type="radio" name="q2" value="True"> True</label>
+        <label><input type="radio" name="q2" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q2">💡 <strong>Hint:</strong> Passwords are a "shared secret." Anyone who obtains them can type them in—no physical device required.</div>
+      <div class="success-box" id="succ-q2">✓ Correct!</div>
+    </div>
+
+    <div class="question-card" id="card-q3">
+      <div class="question-text">Q3. Phishing works by tricking you into typing your real password into a fake website that looks just like the real one.</div>
+      <div class="options">
+        <label><input type="radio" name="q3" value="True"> True</label>
+        <label><input type="radio" name="q3" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q3">💡 <strong>Hint:</strong> The fake site captures whatever you type and relays it directly to the attacker.</div>
+      <div class="success-box" id="succ-q3">✓ Correct!</div>
+    </div>
+
+    <div class="question-card" id="card-q4">
+      <div class="question-text">Q4. If you turn on a one-time SMS code (a text-message code) on top of your password, phishing can no longer steal your login.</div>
+      <div class="options">
+        <label><input type="radio" name="q4" value="True"> True</label>
+        <label><input type="radio" name="q4" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q4">💡 <strong>Hint:</strong> A fake site can ask for the SMS code too and relay it in real-time before it expires. SMS codes are still phishable.</div>
+      <div class="success-box" id="succ-q4">✓ Correct!</div>
+    </div>
+
+    <!-- Part 2 -->
+    <div class="section-title">Part 2 — How Passkeys Change the Game</div>
+
+    <div class="question-card" id="card-q5">
+      <div class="question-text">Q5. A passkey is essentially just a longer, stronger password stored in your browser.</div>
+      <div class="options">
+        <label><input type="radio" name="q5" value="True"> True</label>
+        <label><input type="radio" name="q5" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q5">💡 <strong>Hint:</strong> A passkey isn't a secret you type. It's a pair of cryptographic keys (public key on server, private key on device).</div>
+      <div class="success-box" id="succ-q5">✓ Correct!</div>
+    </div>
+
+    <div class="question-card" id="card-q6">
+      <div class="question-text">Q6. With a passkey, the private key that proves your identity never leaves your device — not even when you sign in.</div>
+      <div class="options">
+        <label><input type="radio" name="q6" value="True"> True</label>
+        <label><input type="radio" name="q6" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q6">💡 <strong>Hint:</strong> Your device signs a unique challenge and sends back only the signature. The key itself never travels across the internet.</div>
+      <div class="success-box" id="succ-q6">✓ Correct!</div>
+    </div>
+
+    <div class="question-card" id="card-q7">
+      <div class="question-text">Q7. To use a passkey, you typically confirm with something on your own device — like a fingerprint, face scan, or device PIN.</div>
+      <div class="options">
+        <label><input type="radio" name="q7" value="True"> True</label>
+        <label><input type="radio" name="q7" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q7">💡 <strong>Hint:</strong> Biometrics unlock the passkey locally on your device and are never sent to the website.</div>
+      <div class="success-box" id="succ-q7">✓ Correct!</div>
+    </div>
+
+    <div class="question-card" id="card-q8">
+      <div class="question-text">Q8. A passkey is tied to the exact website it was created for, and your device will refuse to use it on a look-alike phishing site.</div>
+      <div class="options">
+        <label><input type="radio" name="q8" value="True"> True</label>
+        <label><input type="radio" name="q8" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q8">💡 <strong>Hint:</strong> Passkeys are domain-bound. On a fake domain, the browser simply won't offer the passkey.</div>
+      <div class="success-box" id="succ-q8">✓ Correct!</div>
+    </div>
+
+    <!-- Part 3 -->
+    <div class="section-title">Part 3 — Putting It Together</div>
+
+    <div class="question-card" id="card-q9">
+      <div class="question-text">Q9. Because there's no secret to type, a passkey can't be phished, leaked in a website breach, or reused across sites.</div>
+      <div class="options">
+        <label><input type="radio" name="q9" value="True"> True</label>
+        <label><input type="radio" name="q9" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q9">💡 <strong>Hint:</strong> Even if a website is hacked, attackers only get public keys, which are useless on their own.</div>
+      <div class="success-box" id="succ-q9">✓ Correct!</div>
+    </div>
+
+    <div class="question-card" id="card-q10">
+      <div class="question-text">Q10. Switching to passkeys means you have to memorize an even more complicated secret than before.</div>
+      <div class="options">
+        <label><input type="radio" name="q10" value="True"> True</label>
+        <label><input type="radio" name="q10" value="False"> False</label>
+      </div>
+      <div class="hint-box" id="hint-q10">💡 <strong>Hint:</strong> There is nothing to memorize at all! Passkeys replace passwords with quick biometric checks.</div>
+      <div class="success-box" id="succ-q10">✓ Correct!</div>
+    </div>
+
+    <button type="submit" class="btn-submit">Submit Answers</button>
+  </form>
+
+  <div id="bannerResult" class="banner-result"></div>
+</div>
+
+<script>
+  const answers = {
+    q1: "False",
+    q2: "True",
+    q3: "True",
+    q4: "False",
+    q5: "False",
+    q6: "True",
+    q7: "True",
+    q8: "True",
+    q9: "True",
+    q10: "False"
+  };
+
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let allAnswered = true;
+    let allCorrect = true;
+    let unansweredCount = 0;
+
+    for (let i = 1; i <= 10; i++) {
+      const qKey = `q${i}`;
+      const selected = document.querySelector(`input[name="${qKey}"]:checked`);
+      const card = document.getElementById(`card-${qKey}`);
+      const hint = document.getElementById(`hint-${qKey}`);
+      const success = document.getElementById(`succ-${qKey}`);
+
+      // Reset state
+      card.classList.remove('has-error', 'is-correct');
+      hint.classList.remove('show');
+      success.classList.remove('show');
+
+      if (!selected) {
+        allAnswered = false;
+        unansweredCount++;
+        card.classList.add('has-error');
+      } else {
+        if (selected.value === answers[qKey]) {
+          card.classList.add('is-correct');
+          success.classList.add('show');
+        } else {
+          allCorrect = false;
+          card.classList.add('has-error');
+          hint.classList.add('show');
+        }
+      }
+    }
+
+    const banner = document.getElementById('bannerResult');
+
+    if (!allAnswered) {
+      banner.className = 'banner-result error';
+      banner.innerText = `Please answer all 10 questions before submitting (${unansweredCount} remaining).`;
+    } else if (!allCorrect) {
+      banner.className = 'banner-result error';
+      banner.innerText = 'Some answers are incorrect. Review the hints highlighted above and update your selections!';
+    } else {
+      banner.className = 'banner-result success';
+        banner.innerHTML = '🎉 Congratulations! You answered all questions correctly and learned how Passkeys keep you secure!';
+    }
+
+    banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>
