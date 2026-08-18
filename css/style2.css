@@ -94,11 +94,21 @@ hr {
 }
 
 table {
+   width: 90%;
+   border-collapse: collapse;
+   font-family: sans-serif;
+   font-size: 14px;
+   /*
    background-color: var(--bg-page);
    border: 2px solid var(--bg-card);
    border-radius: 8px;
    padding: 1.25rem;
+   */
 }
+
+th, td { padding: 10px 12px; border-bottom: 1px solid #eaeaea; }
+th { font-weight: 600; background-color: #fafafa; border-bottom: 2px solid #ddd; }
+tr:hover { background-color: #f9f9f9; }
 
 
 
