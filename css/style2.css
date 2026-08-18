@@ -73,8 +73,8 @@ pre, code {
 }
 
 blockquote {
-    margin: 0.5em 0;
-    padding: 0.5em 1.5em;
+    margin: 0.3em 0;
+    padding: 0.3em 1.5em;
     border-left: 4px solid var(--accent);
 }
 
