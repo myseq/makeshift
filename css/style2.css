@@ -78,11 +78,17 @@ a:hover { color: #ffd800; text-decoration: underline; font-weight: bold; }
     box-sizing: border-box; /* Includes border and padding in dimensions */
 }
 
-.code, .language-css {
+code {
     background-color: #1e1e1e;
     font-family: 'Fira Code', monospace;
     color: #c1fe1a; /* chartreuse */
 }
+
+.language-css {
+    font-family: 'Fira Code', monospace;
+    color: #c1fe1a; /* chartreuse */
+}
+
 
 hr {
   border: none;
