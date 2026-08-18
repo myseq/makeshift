@@ -61,7 +61,7 @@ input, textarea, button, select {
     color: inherit;
 }
 
-code {
+pre, code {
     font-family: 'Fira Code', monospace;
     color: #c1fe1a; /* chartreuse */
     background-color: var(--card-bg);
@@ -71,6 +71,7 @@ code {
 .language-css {
     font-family: 'Fira Code', monospace;
     color: #c1fe1a;    /* chartreuse */
+    border: 1px solid var(--border);
 }
 
 
