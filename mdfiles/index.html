@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Markdown Parser</title>
+    <!-- Include the Marked.js library via CDN -->
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Container where your parsed HTML will live -->
+    <div id="content">Loading content...</div>
+
+    <script>
+        async function loadMarkdown() {
+            try {
+                // 1. Fetch your external markdown file
+                const response = await fetch('content.md');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load markdown file');
+                }
+                
+                // 2. Get the raw text content
+                const markdownText = await response.text();
+                
+                // 3. Convert Markdown text into HTML string using Marked.js
+                const htmlContent = marked.parse(markdownText);
+                
+                // 4. Inject the HTML into your page container
+                document.getElementById('content').innerHTML = htmlContent;
+            } catch (error) {
+                document.getElementById('content').innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+            }
+        }
+
+        // Run the script after the page loads
+        window.onload = loadMarkdown;
+    </script>
+</body>
+</html>
+
