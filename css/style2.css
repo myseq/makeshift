@@ -3,7 +3,7 @@
 /* This is mainly customized for markdown files */
 :root {
       --bg-color: #303030;  /* background-color */
-      --card-bg: #b2b2b2;   /* section background-color */
+      --card-bg: #d1d1d1;   /* section background-color */
       --accent: #ffd800;    /* school bus yellow */
       --accent-hover: #ea580c;
       --text: #e0e0e0;        /* text color */
