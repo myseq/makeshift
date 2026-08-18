@@ -13,8 +13,6 @@
       --border: #334155;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -28,11 +26,6 @@ body {
     margin: auto;
     font-family: 'Fira Code', monospace;
     font-size: clamp(1rem, 0.5rem + 1.5vw, 1.125rem); /* Scales smoothly from 16px to 18px */
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 header {
@@ -53,10 +46,14 @@ header p {
   font-size: 1.1rem;
 }
 
+h2 { font-size: 1.7rem; color: var(--accent); } /* sunglow */
+h3 { font-size: 1.3rem; color: #c1fe1a; } /* chartreuse */ 
+h4 { font-size: 1.1rem; color: #c1fe1a; } /* chartreuse */ 
 
-h1, h2, strong { color: #FFD800; /* Sunglow */ }
-h3, h4         { color: #C1FE1A; /* chartreuse */ }
-a              { color: #A4D8FF /* Icy Blue */ }
+strong { color: #FFD800; /* Sunglow */ }
+a      { color: #A4D8FF  /* Icy Blue */ }
+a:link, a:visited { text-decoration: none; font-weight: bold; }
+a:hover { color: #ffd800; text-decoration: underline; font-weight: bold; }
 
 input, textarea, button, select {
     font-family: inherit;
@@ -64,27 +61,16 @@ input, textarea, button, select {
     color: inherit;
 }
 
-a:link, a:visited { text-decoration: none; font-weight: bold; }
-a:hover { color: #ffd800; text-decoration: underline; font-weight: bold; }
-
-.bordered-div {
-    border-width: 3px;
-    border-style: solid;
-    border-color: #ale355; 
-    border-radius: 5px; 
-    padding: 10px 5px 20px 50px;
-    box-sizing: border-box; /* Includes border and padding in dimensions */
-}
-
 code {
     font-family: 'Fira Code', monospace;
     color: #c1fe1a; /* chartreuse */
     background-color: var(--card-bg);
+    padding: 1.25rem;
 }
 
 .language-css {
     font-family: 'Fira Code', monospace;
-    color: #c1fe1a; /* chartreuse */
+    color: #c1fe1a;    /* chartreuse */
 }
 
 
@@ -96,4 +82,7 @@ hr {
   margin: 3rem auto;          /* Centered automatically with generous spacing */
   opacity: 0.4;
 }
+
+
+
 
