@@ -62,10 +62,16 @@ input, textarea, button, select {
 }
 
 pre, code {
+    font-size: 1rem; 
     font-family: 'Fira Code', monospace;
     color: #c1fe1a; /* chartreuse */
     background-color: var(--card-bg);
     padding: 0.38rem;
+}
+
+blockquote {
+    font-style: italic;
+    font-family: Arial, sans-serif; 
 }
 
 .language-css {
