@@ -31,9 +31,9 @@ Here is what each variable typically controls:
 
 #### Others H4
 
-> First bit
+> Blockquote first paragraph
 
-> Second bit
+> Blockquote second paragraph 
 
 ```css
 body {
