@@ -17,11 +17,9 @@ Here is what each variable typically controls:
 
 ## Header
 
-<div class="special-class" markdown="1">
-1. All
-1. Fixed
-1. Up
-</div>
+ 1. All
+ 1. Fixed
+ 1. Up
 
 ## Paragraph
 
