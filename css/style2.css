@@ -93,6 +93,13 @@ hr {
   opacity: 0.4;
 }
 
+table {
+   background-color: var(--bg-page);
+   border: 2px solid var(--bg-card);
+   border-radius: 8px;
+   padding: 1.25rem;
+}
+
 
 
 
