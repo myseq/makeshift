@@ -79,7 +79,7 @@ a:hover { color: #ffd800; text-decoration: underline; font-weight: bold; }
 }
 
 code {
-    background-color: #1e1e1e;
+    background-color: #202020;
     font-family: 'Fira Code', monospace;
     color: #c1fe1a; /* chartreuse */
 }

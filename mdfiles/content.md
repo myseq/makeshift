@@ -1,4 +1,3 @@
-# Colors
 
 ## 🎨 How to Customize the Colors
 
