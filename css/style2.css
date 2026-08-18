@@ -2,11 +2,12 @@
 
 /* This is mainly customized for markdown files */
 :root {
-      --bg-color: #303030;  /* background-color */
-      --card-bg: #3e3e3e;   /* section background-color */
-      --accent: #ffd800;    /* school bus yellow */
-      --accent-hover: #ea580c;
-      --text: #e0e0e0;        /* text color */
+    --header: #ffd800;   /* sunglow */ 
+    --bg-page: #303030;  /* background-color */
+    --bg-card: #3e3e3e;  /* section background-color */
+    --text: #e0e0e0;     /* text color */
+    --accent: #ffd800;   /* school bus yellow */
+
       --text-muted: #e1e1e1;  /* paragraph text */ 
       --success: #22c55e;
       --error: #ef4444;
@@ -17,7 +18,7 @@ html { scroll-behavior: smooth; }
 
 body {
     /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
-    background-color: var(--bg-color);
+    background-color: var(--bg-page);
     color: var(--text);
     line-height: 1.6; /* 1.4 */
     padding: 2rem 1rem;
@@ -46,9 +47,11 @@ header p {
   font-size: 1.1rem;
 }
 
-h2 { font-size: 1.7rem; color: var(--accent); } /* sunglow */
-h3 { font-size: 1.3rem; color: #c1fe1a; } /* chartreuse */ 
-h4 { font-size: 1.1rem; color: #c1fe1a; } /* chartreuse */ 
+h1,h2, h3, h4 { color: var(--header); }
+
+h2 { font-size: 1.7rem; } 
+h3 { font-size: 1.3rem; }
+h4 { font-size: 1.1rem; } 
 
 strong { color: #FFD800; /* Sunglow */ }
 a      { color: #A4D8FF  /* Icy Blue */ }
@@ -65,7 +68,7 @@ pre, code {
     font-size: 1rem; 
     font-family: 'Fira Code', monospace;
     color: #c1fe1a; /* chartreuse */
-    background-color: var(--card-bg);
+    background-color: var(--bg-card);
     padding: 0.38rem;
 }
 
