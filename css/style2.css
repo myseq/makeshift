@@ -3,11 +3,11 @@
 /* This is mainly customized for markdown files */
 :root {
       --bg-color: #303030;  /* background-color */
-      --card-bg: #1e293b;
+      --card-bg: #1e1e1e;
       --accent: #ffd800;    /* school bus yellow */
       --accent-hover: #ea580c;
       --text: #e0e0e0;        /* text color */
-      --text-muted: #1e1e1e; /*  */ 
+      --text-muted: #e1e1e1;  /* paragraph text */ 
       --success: #22c55e;
       --error: #ef4444;
       --border: #334155;
@@ -54,17 +54,15 @@ header p {
 }
 
 
-h1, strong { color: #FFD800; /* Sunglow */ }
-h2, h3     { color: #C1FE1A; /* chartreuse */ }
-a          { color: #A4D8FF /* Icy Blue */ }
+h1, h2, strong { color: #FFD800; /* Sunglow */ }
+h3, h4         { color: #C1FE1A; /* chartreuse */ }
+a              { color: #A4D8FF /* Icy Blue */ }
 
 input, textarea, button, select {
     font-family: inherit;
     font-size: inherit;
     color: inherit;
 }
-
-a:hover { color: #84cc16; text-decoration: underline; font-weight:bold; }
 
 a:link, a:visited { text-decoration: none; font-weight: bold; }
 a:hover { color: #ffd800; text-decoration: underline; font-weight: bold; }
@@ -79,9 +77,9 @@ a:hover { color: #ffd800; text-decoration: underline; font-weight: bold; }
 }
 
 code {
-    background-color: var(--card-bg);
     font-family: 'Fira Code', monospace;
     color: #c1fe1a; /* chartreuse */
+    background-color: var(--card-bg);
 }
 
 .language-css {
