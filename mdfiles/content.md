@@ -14,13 +14,13 @@ Here is what each variable typically controls:
  * `--error`: Colors for warning messages or form errors.
  * `--border`: Lines that separate sections or outline cards.
 
-## Header
+## Header H2
 
  1. All
  1. Fixed
  1. Up
 
-## Paragraph
+### Paragraph H3
 
 1. one paragraph
 
@@ -29,7 +29,7 @@ Here is what each variable typically controls:
 1. another paragraph
 
 
-## Others
+#### Others H4
 
 > First bit
 
