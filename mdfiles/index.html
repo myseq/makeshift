@@ -19,7 +19,7 @@
         async function loadMarkdown() {
             try {
                 // 1. Fetch your external markdown file
-                const response = await fetch('content.md');
+                const response = await fetch('/mdfiles/content.md');
                 
                 if (!response.ok) {
                     throw new Error('Failed to load markdown file');
