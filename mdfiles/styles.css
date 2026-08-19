@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 @media (prefers-color-scheme: dark) {
-:root {
+
+:root { /* Dark mode as default theme */ 
     --header: #ffd800;   /* sunglow */ 
     --bg-page: #303030;  /* background-color */
     --bg-card: #3e3e3e;  /* section background-color */
@@ -10,26 +11,12 @@
     --code: #c1fe1a;     /* chartreuse */
     --link: #A4D8FF;     /* Icy Blue */
     --bold: #f6fa00;     /* */
-    --theme-transition: background-color 0.3s ease, color 0.3s ease;
 
-    --bg: #252525; /* dark gray */
-    --fg: #fff;    /* white */
-  }
-}
-:root:has(#mode_dark:checked) {
-    --header: #ffd800;   /* sunglow */ 
-    --bg-page: #303030;  /* background-color */
-    --bg-card: #3e3e3e;  /* section background-color */
-    --text: #e0e0e0;     /* text color */
-    --accent: #ffd800;   /* school bus yellow */
-    --code: #c1fe1a;     /* chartreuse */
-    --link: #A4D8FF;     /* Icy Blue */
-    --bold: #f6fa00;     /* */
+    /* Smooth transition for theme switching */
     --theme-transition: background-color 0.3s ease, color 0.3s ease;
-
 }
 
-:root:has(#mode_light:checked) {
+html:has(#mode_light:checked) {  /* light theme */
     --header: #008dff;   /*  */ 
     --bg-page: #f3f3f3;  /* background-color */
     --bg-card: #e3e3e3;  /* section background-color */
@@ -38,14 +25,10 @@
     --code: #148526;     /* dark green */
     --link: #206aa2;     /*  */
     --bold: #787a00;     /* */
-    --theme-transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* style of the toggle */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-}
+.theme-toggle { display: flex; align-items: center; }
 
 /* hide the input */
 .theme-toggle input[type="radio"] {
@@ -66,12 +49,15 @@
     /* display: grid; */
     place-items: center;
     cursor: pointer;
+    transition: var(--theme-transition);
 }
 
 /* icon visibility
  *
  * default light with system and radio button overwrite
  */
+
+/*
 label[for="mode_light"] { display: none; }
 label[for="mode_dark"] { display: grid; }
 
@@ -92,7 +78,14 @@ label[for="mode_dark"] { display: grid; }
    display: grid;
 }
 
+*/
 
+/* Highlight the active mode button */
+html:has(#mode_light:checked) label[for="mode_light"],
+html:has(#mode_dark:checked) label[for="mode_dark"] {
+    background-color: var(--fg-main);
+    color: var(--bg-page);
+}
 
 
 html { scroll-behavior: smooth; }
