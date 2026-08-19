@@ -1,6 +1,13 @@
 # CISA KEV (36M)
 
 ```mermaid
+---
+config:
+  themeVariables:
+    xyChart:
+      showDataLabel: true
+      plotColorPalette: '#0000FF, #0000FF, #0000FF, #FF0000, #0000FF'
+---
 xychart
     title "KEV Distribution vs Mean"
     x-axis "Monthly Distribution" [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
