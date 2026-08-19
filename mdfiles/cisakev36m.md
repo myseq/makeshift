@@ -40,8 +40,8 @@ config:
     xyChart:
         width: 640
         height: 480
-        showLegend: true
-        showDataLabel: true
+        showLegend: false
+        showDataLabel: false
         showDataLabelOutsideBar: false
     themeVariables:
         xyChart:
