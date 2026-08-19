@@ -22,17 +22,16 @@ config:
             yAxisTitleColor: "#e1e1e1"
             yAxisTickColor: "#e1e1e1"
             yAxisLineColor: "#e1e1e1"
-            plotColorPalette: '#36A2EB33, #FF638433, #ffd800'
-
-
 ---
 xychart
     title "KEV Distribution vs Mean"
     x-axis "Monthly Distribution" [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
     y-axis "KEV"  0 --> 250
-    bar "below" [28, 32, 0, 0, 0, 0, 70, 59, 69, 73, 0, 40]
     bar "above" [ 0,  0, 132, 164, 241, 160, 0, 0, 0, 0, 134, 0]
     line "mean" [100.16, 100.16, 100.16 "🚨", 100.16 "🚨", 100.16 "🚨", 100.16 "🚨", 100.16, 100.16 "Mean = 100.16", 100.16, 100.16, 100.16 "🚨", 100.16]
 
 ```
 
+            plotColorPalette: '#36A2EB33, #FF638433, #ffd800'
+
+    bar "below" [28, 32, 0, 0, 0, 0, 70, 59, 69, 73, 0, 40]
