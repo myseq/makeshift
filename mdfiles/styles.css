@@ -86,6 +86,8 @@ html:has(#mode_dark:checked) label[for="mode_dark"] {
     color: var(--bg-page);
 }
 
+label[for="mode_light"] { display: none; }
+label[for="mode_dark"] { display: grid; }
 html:has(#mode_dark:checked) label[for="mode_dark"] { display: none; }
 html:has(#mode_dark:checked) label[for="mode_light"] { display: grid; }
 html:has(#mode_light:checked) label[for="mode_light"] { display: none; }
