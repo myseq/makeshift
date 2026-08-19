@@ -47,7 +47,7 @@ html:has(#mode_light:checked) {  /* light theme */
     cursor: pointer;
     transition: var(--theme-transition);
     /* width: 40px; height: 40px; */
-    /* display: grid; */
+    display: grid; 
     place-items: center; 
 }
 
@@ -85,6 +85,11 @@ html:has(#mode_dark:checked) label[for="mode_dark"] {
     background-color: var(--text);
     color: var(--bg-page);
 }
+
+html:has(#mode_dark:checked) label[for="mode_dark"] { display: none; }
+html:has(#mode_dark:checked) label[for="mode_light"] { display: grid; }
+html:has(#mode_light:checked) label[for="mode_light"] { display: none; }
+html:has(#mode_light:checked) label[for="mode_dark"] { display: grid; }
 
 
 html { scroll-behavior: smooth; }
