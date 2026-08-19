@@ -6,7 +6,7 @@ config:
   themeVariables:
     xyChart:
       showDataLabel: true
-      plotColorPalette: '#0000FF, #0000FF, #0000FF, #FF0000, #0000FF'
+      plotColorPalette: '#0000FF, #0000FF, #0000FF, #FF0000, #0000FF, #0000FF, #0000FF, #0000FF, #0000FF, #0000FF, #0000FF, #0000FF'
 ---
 xychart
     title "KEV Distribution vs Mean"
