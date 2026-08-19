@@ -54,7 +54,7 @@ label[for="mode_dark"] { display: grid; }
     --accent: #ffd800;   /* school bus yellow */
     --text: #e0e0e0;     /* text color */
     --code: #c1fe1a;     /* chartreuse */
-    --link: #A4D8FF      /* Icy Blue */
+    --link: #A4D8FF;     /* Icy Blue */
     --bold: #f6fa00;     /* */
 
     --bg: #252525; /* dark gray */
@@ -68,7 +68,7 @@ label[for="mode_dark"] { display: grid; }
     --text: #e0e0e0;     /* text color */
     --accent: #ffd800;   /* school bus yellow */
     --code: #c1fe1a;     /* chartreuse */
-    --link: #A4D8FF      /* Icy Blue */
+    --link: #A4D8FF;     /* Icy Blue */
     --bold: #f6fa00;     /* */
 
 }
@@ -125,7 +125,7 @@ h2 { font-size: 1.7rem; }
 h3 { font-size: 1.3rem; }
 h4 { font-size: 1.1rem; } 
 
-strong { color: var(--bold); }
+strong { color: var(--bold); font-weight: bold; }
 a      { color: var(--link); }
 a:link, a:visited { text-decoration: none; font-weight: bold; }
 a:hover { color: #ffd800; text-decoration: underline; font-weight: bold; }
