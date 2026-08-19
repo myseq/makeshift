@@ -18,7 +18,7 @@ config:
 xychart
     title "KEV Distribution vs Mean"
     x-axis "Monthly Distribution" [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
-    y-axis "KEV" 0 --> 250
+    y-axis "KEV" [0, 50, 100, 150, 250]
     bar "month" [28, 32, 132, 164, 241, 160, 70, 59, 69, 73, 134, 40]
     line "mean" [100.16, 100.16, 100.16, 100.16, 100.16, 100.16, 100.16, 100.16 "Mean = 100.16", 100.16, 100.16, 100.16, 100.16]
 
