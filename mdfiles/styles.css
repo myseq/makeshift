@@ -51,33 +51,6 @@ html:has(#mode_light:checked) {  /* light theme */
     place-items: center; 
 }
 
-/* icon visibility
- *
- * default light with system and radio button overwrite
- */
-
-/*
-label[for="mode_light"] { display: none; }
-label[for="mode_dark"] { display: grid; }
-
-@media (prefers-color-scheme: dark) {
-  label[for="mode_light"] { display: grid; }
-  label[for="mode_dark"] { display: none; }
-}
-:root:has(#mode_dark:checked) label[for="mode_light"] {
-   display: grid;
-}
-:root:has(#mode_dark:checked) label[for="mode_dark"] {
-   display: none;
-}
-:root:has(#mode_light:checked) label[for="mode_light"] {
-   display: none;
-}
-:root:has(#mode_light:checked) label[for="mode_dark"] {
-   display: grid;
-}
-
-*/
 
 /* Highlight the active mode button */
 html:has(#mode_light:checked) label[for="mode_light"],
@@ -86,8 +59,13 @@ html:has(#mode_dark:checked) label[for="mode_dark"] {
     color: var(--bg-page);
 }
 
-label[for="mode_light"] { display: none; }
-label[for="mode_dark"] { display: grid; }
+/* icon visibility
+ *
+ * default light with system and radio button overwrite
+ */
+
+label[for="mode_light"] { display: grid; }
+label[for="mode_dark"] { display: none; }
 html:has(#mode_dark:checked) label[for="mode_dark"] { display: none; }
 html:has(#mode_dark:checked) label[for="mode_light"] { display: grid; }
 html:has(#mode_light:checked) label[for="mode_light"] { display: none; }
