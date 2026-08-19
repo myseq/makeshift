@@ -1,9 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
+@media (prefers-color-scheme: dark) {
+:root {
+    --header: #ffd800;   /* sunglow */ 
+    --bg-page: #303030;  /* background-color */
+    --bg-card: #3e3e3e;  /* section background-color */
+    --accent: #ffd800;   /* school bus yellow */
+    --text: #e0e0e0;     /* text color */
+    --code: #c1fe1a;     /* chartreuse */
+    --link: #A4D8FF;     /* Icy Blue */
+    --bold: #f6fa00;     /* */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease;
+
+    --bg: #252525; /* dark gray */
+    --fg: #fff;    /* white */
+  }
+}
+:root:has(#mode_dark:checked) {
+    --header: #ffd800;   /* sunglow */ 
+    --bg-page: #303030;  /* background-color */
+    --bg-card: #3e3e3e;  /* section background-color */
+    --text: #e0e0e0;     /* text color */
+    --accent: #ffd800;   /* school bus yellow */
+    --code: #c1fe1a;     /* chartreuse */
+    --link: #A4D8FF;     /* Icy Blue */
+    --bold: #f6fa00;     /* */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+:root:has(#mode_light:checked) {
+    --header: #008dff;   /*  */ 
+    --bg-page: #f3f3f3;  /* background-color */
+    --bg-card: #e3e3e3;  /* section background-color */
+    --text: #1e1e1e;     /* text color */
+    --accent: #008dff;   /*  */
+    --code: #148526;     /* dark green */
+    --link: #206aa2;     /*  */
+    --bold: #787a00;     /* */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 /* style of the toggle */
 .theme-toggle {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 /* hide the input */
@@ -51,47 +94,10 @@ label[for="mode_dark"] { display: grid; }
    display: grid;
 }
 
-@media (prefers-color-scheme: dark) {
-:root {
-    --header: #ffd800;   /* sunglow */ 
-    --bg-page: #303030;  /* background-color */
-    --bg-card: #3e3e3e;  /* section background-color */
-    --accent: #ffd800;   /* school bus yellow */
-    --text: #e0e0e0;     /* text color */
-    --code: #c1fe1a;     /* chartreuse */
-    --link: #A4D8FF;     /* Icy Blue */
-    --bold: #f6fa00;     /* */
-    --theme-transition: background-color 0.3s ease, color 0.3s ease;
 
-    --bg: #252525; /* dark gray */
-    --fg: #fff;    /* white */
-  }
-}
-:root:has(#mode_dark:checked) {
-    --header: #ffd800;   /* sunglow */ 
-    --bg-page: #303030;  /* background-color */
-    --bg-card: #3e3e3e;  /* section background-color */
-    --text: #e0e0e0;     /* text color */
-    --accent: #ffd800;   /* school bus yellow */
-    --code: #c1fe1a;     /* chartreuse */
-    --link: #A4D8FF;     /* Icy Blue */
-    --bold: #f6fa00;     /* */
-    --theme-transition: background-color 0.3s ease, color 0.3s ease;
 
-}
 
-:root:has(#mode_light:checked) {
-    --header: #008dff;   /*  */ 
-    --bg-page: #f3f3f3;  /* background-color */
-    --bg-card: #e3e3e3;  /* section background-color */
-    --text: #1e1e1e;     /* text color */
-    --accent: #008dff;   /*  */
-    --code: #148526;     /* dark green */
-    --link: #206aa2;     /*  */
-    --bold: #787a00;     /* */
-    --theme-transition: background-color 0.3s ease, color 0.3s ease;
 
-}
 
 
 html { scroll-behavior: smooth; }
