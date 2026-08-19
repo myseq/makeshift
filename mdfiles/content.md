@@ -25,6 +25,7 @@ Here is what each variable typically controls:
 1. one paragraph
 
     more for 1st list item :)
+    more style like **strong**, *italic*, ***Strong+Italic***
 
 1. another paragraph
 
