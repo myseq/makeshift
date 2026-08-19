@@ -22,7 +22,7 @@ config:
             yAxisTitleColor: "#e1e1e1"
             yAxisTickColor: "#e1e1e1"
             yAxisLineColor: "#e1e1e1"
-            plotColorPalette: '#ffd800, #36A2EB33, #FF638433'
+            plotColorPalette: '#36A2EB33, #FF638433, #ffd800'
 
 
 ---
