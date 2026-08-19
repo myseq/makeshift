@@ -41,8 +41,8 @@ config:
         width: 640
         height: 480
         showLegend: true
-        showDataLabel: false
-        showDataLabelOutsideBar: true
+        showDataLabel: true
+        showDataLabelOutsideBar: false
     themeVariables:
         xyChart:
             backgroundColor: "#1e1e1e"
@@ -63,7 +63,7 @@ xychart
     x-axis "Monthly Distribution" [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
     y-axis "KEV"  0 --> 250
     bar "below" [28, 32, 0, 0, 0, 0, 70, 59, 69, 73, 0, 40]
-    bar "above" [ -1,  -1, 132, 164, 241, 160, -1, -1, -1, -1, 134, -1]
+    bar "above" [ 0,  0, 132, 164, 241, 160, 0, 0, 0, 0, 134, 0]
     line "mean" [100.16, 100.16, 100.16 "🚨", 100.16 "🚨", 100.16 "🚨", 100.16 "🚨", 100.16, 100.16 "Mean = 100.16", 100.16, 100.16, 100.16 "🚨", 100.16]
 
 ```
