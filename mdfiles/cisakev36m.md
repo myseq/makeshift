@@ -68,5 +68,4 @@ xychart
 
 ```
 
-            plotColorPalette: '#36A2EB33, #FF638433, #ffd800'
 
