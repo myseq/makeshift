@@ -62,8 +62,8 @@
     border: 2px solid var(--text);
     border-radius: 4px;
     transition: var(--theme-transition);
-    width: 40px; height: 40px;
-    display: grid;
+    /* width: 40px; height: 40px; */
+    /* display: grid; */
     place-items: center;
     cursor: pointer;
 }
