@@ -11,6 +11,7 @@ config:
         showDataLabelOutsideBar: true
     themeVariables:
         xyChart:
+            backgroundColor: "#e1e1e1"
             titleColor: "#ffd800"
             plotColorPalette: '#36A2EB33, #ffd800'
 
