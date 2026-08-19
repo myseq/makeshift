@@ -53,6 +53,7 @@ label[for="mode_dark"] { display: grid; }
     --bg-card: #3e3e3e;  /* section background-color */
     --text: #e0e0e0;     /* text color */
     --accent: #ffd800;   /* school bus yellow */
+    --code: #c1fe1a;     /* chartreuse */
 
     --bg: #252525; /* dark gray */
     --fg: #fff;    /* white */
@@ -64,9 +65,8 @@ label[for="mode_dark"] { display: grid; }
     --bg-card: #3e3e3e;  /* section background-color */
     --text: #e0e0e0;     /* text color */
     --accent: #ffd800;   /* school bus yellow */
+    --code: #c1fe1a;     /* chartreuse */
 
-  --bg: #252525; /* dark gray */
-  --fg: #fff;    /* white */
 }
 
 :root:has(#mode_light:checked) {
@@ -75,9 +75,8 @@ label[for="mode_dark"] { display: grid; }
     --bg-card: #e3e3e3;  /* section background-color */
     --text: #1e1e1e;     /* text color */
     --accent: #ffd800;   /* school bus yellow */
+    --code: #1aef1c;     /*  */
 
-  --bg: #fff;    /* white */
-  --fg: #252525; /* dark gray */
 }
 
 /* This is mainly customized for markdown files */
@@ -144,7 +143,7 @@ input, textarea, button, select {
 pre, code {
     font-size: 1rem; 
     font-family: 'Fira Code', monospace;
-    color: #c1fe1a; /* chartreuse */
+    color: var(--code);
     background-color: var(--bg-card);
     padding: 0.38rem;
 }
