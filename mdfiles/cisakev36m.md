@@ -13,7 +13,13 @@ config:
         xyChart:
             backgroundColor: "#1e1e1e"
             titleColor: "#ffd800"
+            dataLabelColor: "#e1e1e1"
             plotColorPalette: '#36A2EB33, #ffd800'
+            xAxisLabelColor: "#e1e1e1"
+            xAxisTitleColor: "#e1e1e1"
+            xAxisTickColor: "#e1e1e1"
+            xAxisLineColor: "#e1e1e1"
+
 
 ---
 xychart
