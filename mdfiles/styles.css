@@ -45,8 +45,6 @@
 .theme-toggle {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
 }
 
 /* hide the input */
@@ -93,9 +91,6 @@ label[for="mode_dark"] { display: grid; }
 :root:has(#mode_light:checked) label[for="mode_dark"] {
    display: grid;
 }
-
-
-
 
 
 
