@@ -19,6 +19,10 @@ config:
             xAxisTitleColor: "#e1e1e1"
             xAxisTickColor: "#e1e1e1"
             xAxisLineColor: "#e1e1e1"
+            yAxisLabelColor: "#e1e1e1"
+            yAxisTitleColor: "#e1e1e1"
+            yAxisTickColor: "#e1e1e1"
+            yAxisLineColor: "#e1e1e1"
 
 
 ---
