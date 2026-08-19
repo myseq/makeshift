@@ -6,6 +6,7 @@ config:
     xyChart:
         width: 900
         height: 600
+        showLegend: true
         showDataLabel: true
         showDataLabelOutsideBar: true
     themeVariables:
