@@ -3,10 +3,11 @@
 ```mermaid
 ---
 config:
+  xychart:
+    showDataLabel: true
+    showDataLabelOutsideBar: true
   themeVariables:
     xyChart:
-      showDataLabel: true
-      showDataLabelOutsideBar: true
       plotColorPalette: '#0000FF, #0000FF, #FF0000, #FF0000, #FF0000, #FF0000, #0000FF, #0000FF, #0000FF, #0000FF, #FF0000, #0000FF'
 ---
 xychart
