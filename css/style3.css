@@ -75,7 +75,7 @@ label[for="mode_dark"] { display: grid; }
     --bg-card: #e3e3e3;  /* section background-color */
     --text: #1e1e1e;     /* text color */
     --accent: #ffd800;   /* school bus yellow */
-    --code: #1aef1c;     /*  */
+    --code: #068e53;     /*  */
 
 }
 
@@ -161,7 +161,7 @@ blockquote p {
 
 .language-css {
     font-family: 'Fira Code', monospace;
-    color: #c1fe1a;    /* chartreuse */
+    color: var(--code);
     border: 1px solid var(--border);
 }
 
