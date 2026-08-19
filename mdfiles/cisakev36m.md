@@ -11,6 +11,8 @@ config:
     themeVariables:
         xyChart:
             titleColor: "#ffd800"
+            plotColorPalette: '#36A2EB33, #ffd800'
+
 ---
 xychart
     title "KEV Distribution vs Mean"
