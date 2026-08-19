@@ -2,10 +2,13 @@
 
 ```mermaid
 xychart
-    title "Sales Revenue"
+    title "KEV Distribution vs Mean"
     x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
-    y-axis "Revenue (in $)" 4000 --> 11000
-    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
-    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    y-axis "KEV" 0 --> 250
+    bar [28, 32, 132, 164, 241, 160, 70, 59, 69, 73, 134, 40]
+    line [100.16, 100.16, 100.16, 100.16, 100.16, 100.16, 100.16, 100.16, 100.16, 100.16, 100.16, 100.16]
 
 ```
+
+Jan	Feb	Mar	Apr	May	Jun	Jul	Aug	Sep	Oct	Nov	Dec
+28	32	132	164	241	160	70	59	69	73	134	40
