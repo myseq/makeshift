@@ -74,7 +74,7 @@ label[for="mode_dark"] { display: grid; }
 }
 
 :root:has(#mode_light:checked) {
-    --header: #ffd800;   /* sunglow */ 
+    --header: #008dff;   /*  */ 
     --bg-page: #f3f3f3;  /* background-color */
     --bg-card: #e3e3e3;  /* section background-color */
     --text: #1e1e1e;     /* text color */
