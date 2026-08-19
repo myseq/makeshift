@@ -82,7 +82,7 @@ label[for="mode_dark"] { display: grid; }
 /* Highlight the active mode button */
 html:has(#mode_light:checked) label[for="mode_light"],
 html:has(#mode_dark:checked) label[for="mode_dark"] {
-    background-color: var(--fg-main);
+    background-color: var(--text);
     color: var(--bg-page);
 }
 
