@@ -15,16 +15,26 @@ Here is what each variable typically controls:
 
 ## Header H2
 
+This is a sample on `ordered` list:
+
  1. All
  1. Fixed
  1. Up
 
-### Paragraph H3
+This is a sample on `bullet` point:
+
+ - All
+ - Fixed
+ - Up
+
+### Header H3
 
 1. one paragraph
 
     more for 1st list item :)
     more style like **strong**, *italic*, ***Strong+Italic***
+
+    Another paragraph more style like **strong**, *italic*, ***Strong+Italic***
 
 1. another paragraph
 
