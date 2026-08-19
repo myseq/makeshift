@@ -4,15 +4,14 @@
 You can replace the existing hex codes with your own choices. 
 Here is what each variable typically controls:
 
- * `--bg-color`: Main background of the webpage.
- * `--card-bg`: Background for boxes, sidebars, or containers.
- * `--accent`: Primary brand color for buttons, links, and highlights.
- * `--accent-hover`: The color an accent element changes to when hovered.
- * `--text`: Main body text color.
- * `--text-muted`: Secondary text color for captions or dates.
- * `--success`: Colors for confirmation messages or positive alerts.
- * `--error`: Colors for warning messages or form errors.
- * `--border`: Lines that separate sections or outline cards.
+ *   `--header`: Headers (h1,h2,h3, h4) color.
+ *   `--bg-page`: Main **background-color** of the webpage.
+ *   `--bg-card`: Section **background-color** for boxes, sidebars, or containers.
+ *   `--accent`: Primary brand color.
+ *   `--text`: Main body text color.
+ *   `--code`: Coding text color.
+ *   `--link`: URL link color.
+ *   `--bold`: Strong and bold for text highlight color.
 
 ## Header H2
 
@@ -29,6 +28,7 @@ Here is what each variable typically controls:
 
 1. another paragraph
 
+    more style like `inline` code.
 
 #### Others H4
 
@@ -42,8 +42,8 @@ body {
 }
 ```
 
-| Col_01 | Col_02 | Col_03 |
-|--------|:------:|-------:|
+| Hdr Col_01 | Hdr Col_02 | Hdr Col_03 |
+|------------|:----------:|-----------:|
 | a      |    bbbbb   |    c |
 | 1      |    22222   |      3.141592654 |
 | foo    |   bar_bar  |    baz |
