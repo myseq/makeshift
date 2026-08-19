@@ -75,7 +75,7 @@ label[for="mode_dark"] { display: grid; }
     --bg-card: #e3e3e3;  /* section background-color */
     --text: #1e1e1e;     /* text color */
     --accent: #ffd800;   /* school bus yellow */
-    --code: #068e53;     /*  */
+    --code: #148526; /*#00802d; */    /* dark green */
 
 }
 
