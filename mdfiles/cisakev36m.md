@@ -4,8 +4,8 @@
 ---
 config:
     xyChart:
-        width: 900
-        height: 600
+        width: 640
+        height: 480
         showLegend: true
         showDataLabel: true
         showDataLabelOutsideBar: true
@@ -24,12 +24,3 @@ xychart
 
 ```
 
----
-config:
-  xychart:
-    showDataLabel: true
-    showDataLabelOutsideBar: true
-  themeVariables:
-    xyChart:
-      plotColorPalette: '#0000FF, #0000FF, #FF0000, #FF0000, #FF0000, #FF0000, #0000FF, #0000FF, #0000FF, #0000FF, #FF0000, #0000FF'
----
