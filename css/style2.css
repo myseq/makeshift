@@ -14,52 +14,6 @@
       --border: #334155;
 }
 
-/* style of the toggle */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-}
-
-/* hide the input */
-.theme-toggle input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  margin: 0;
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-.theme-toggle label {
-    width: 40px; height: 40px;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-}
-
-/* icon visibility
- *
- * default light with system and radio button overwrite
- */
-label[for="mode_light"] { display: none; }
-label[for="mode_dark"] { display: grid; }
-
-@media (prefers-color-scheme: dark) {
-  label[for="mode_light"] { display: grid; }
-  label[for="mode_dark"] { display: none; }
-}
-:root:has(#mode_dark:checked) label[for="mode_light"] {
-   display: grid;
-}
-:root:has(#mode_dark:checked) label[for="mode_dark"] {
-   display: none;
-}
-:root:has(#mode_light:checked) label[for="mode_light"] {
-   display: none;
-}
-:root:has(#mode_light:checked) label[for="mode_dark"] {
-   display: grid;
-}
-
 html { scroll-behavior: smooth; }
 
 body {
