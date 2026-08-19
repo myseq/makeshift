@@ -15,7 +15,12 @@
   opacity: 0;
   pointer-events: none;
 }
+
 .theme-toggle label {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--text);
+    border-radius: 4px;
+    transition: var(--theme-transition);
     width: 40px; height: 40px;
     display: grid;
     place-items: center;
@@ -56,6 +61,7 @@ label[for="mode_dark"] { display: grid; }
     --code: #c1fe1a;     /* chartreuse */
     --link: #A4D8FF;     /* Icy Blue */
     --bold: #f6fa00;     /* */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease;
 
     --bg: #252525; /* dark gray */
     --fg: #fff;    /* white */
@@ -70,6 +76,7 @@ label[for="mode_dark"] { display: grid; }
     --code: #c1fe1a;     /* chartreuse */
     --link: #A4D8FF;     /* Icy Blue */
     --bold: #f6fa00;     /* */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease;
 
 }
 
@@ -82,6 +89,7 @@ label[for="mode_dark"] { display: grid; }
     --code: #148526;     /* dark green */
     --link: #206aa2;     /*  */
     --bold: #787a00;     /* */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease;
 
 }
 
