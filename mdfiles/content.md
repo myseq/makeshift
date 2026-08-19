@@ -31,16 +31,17 @@ This is a sample on `bullet` point:
 
 1. one paragraph
 
+    **Indented** paragraph. 
     more for 1st list item :)
     more style like **strong**, *italic*, ***Strong+Italic***
 
-    Another paragraph more style like **strong**, *italic*, ***Strong+Italic***
+    **Indented** paragraph more style like **strong**, *italic*, ***Strong+Italic***
 
 1. another paragraph
 
     more style like `inline` code.
 
-#### Others H4
+#### Header H4
 
 > Blockquote first paragraph
 
@@ -59,6 +60,7 @@ body {
 | foo    |   bar_bar  |    baz |
 
 
+## Links/Image
 
  - Main [Page](/)
  - GitHub [Link](https://github.com/myseq/makeshift/)
@@ -69,6 +71,8 @@ body {
 ---
 
 ## CISA KEV 
+
+`Mermaid` isn't supported yet. 
 
 ```mermaid
 ---
