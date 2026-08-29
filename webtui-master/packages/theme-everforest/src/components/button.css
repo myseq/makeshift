@@ -1,0 +1,46 @@
+@layer components {
+    [data-webtui-theme|='everforest'] {
+        button {
+            &[variant-='red'] {
+                --button-primary: var(--red);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='green'] {
+                --button-primary: var(--green);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='yellow'] {
+                --button-primary: var(--yellow);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='blue'] {
+                --button-primary: var(--blue);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='purple'] {
+                --button-primary: var(--purple);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='aqua'] {
+                --button-primary: var(--aqua);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='orange'] {
+                --button-primary: var(--orange);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='statusline1'] {
+                --button-primary: var(--statusline1);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='statusline2'] {
+                --button-primary: var(--statusline2);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='statusline3'] {
+                --button-primary: var(--statusline3);
+                --button-secondary: var(--background0);
+            }
+        }
+    }
+}

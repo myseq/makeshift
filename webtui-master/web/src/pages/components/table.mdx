@@ -1,0 +1,287 @@
+---
+layout: '@/layouts/Doc.astro'
+title: Table
+---
+
+import Example from '@/components/Example.astro'
+import tableStyle from '@webtui/css/components/table.css?raw'
+import boxStyle from '@webtui/css/utils/box.css?raw'
+
+Displays a table
+
+<Example
+    stylesheets={[tableStyle]}
+    html={`<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>John</td>
+            <td>25</td>
+            <td>USA</td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>30</td>
+            <td>Canada</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Joe</td>
+            <td>27.8</td>
+            <td>Lithuania for some unexplainable reason</td>
+        </tr>
+    </tfoot>
+</table>
+`}
+/>
+
+## Import
+
+```css
+@import '@webtui/css/components/table.css';
+```
+
+## Usage
+
+```html
+<table>
+    <thead>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+        ...
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>...</td>
+        </tr>
+    </tfoot>
+</table>
+```
+
+## Examples
+
+### Divide
+
+Use the `divide-` attribute to change the direction of the table dividers
+
+```html
+<table divide-="none"></table>
+<table divide-="horizontal"></table>
+<table divide-="vertical"></table>
+<table divide-="both"></table>
+<!-- Not providing `divide-` is the same as `divide-="both"` -->
+<table></table>
+```
+
+<Example
+    stylesheets={[tableStyle, `table {margin-bottom: 1lh;}`]}
+    html={`
+<table divide-="both">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>both</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>or</td>
+            <td>also</td>
+        </tr>
+        <tr>
+            <td>divide-</td>
+            <td>&lt;not provided&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="horizontal">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>horizontal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>hey</td>
+            <td>look</td>
+        </tr>
+        <tr>
+            <td>horizontal</td>
+            <td>lines</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="vertical">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>vertical</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>hey</td>
+            <td>look</td>
+        </tr>
+        <tr>
+            <td>vertical</td>
+            <td>lines</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="none">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>none</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>hey</td>
+            <td>look</td>
+        </tr>
+        <tr>
+            <td>no</td>
+            <td>lines</td>
+        </tr>
+    </tbody>
+</table>
+    `}
+/>
+
+## ASCII Boxes
+
+Pair the table component with the [`box-` utility](/start/ascii-boxes) to add box borders around the table
+
+```html
+<table box-="none" divide-="none"></table>
+<table box-="square" divide-="both"></table>
+<table box-="round" divide-="horizontal"></table>
+<table box-="double" divide-="vertical"></table>
+```
+
+<Example
+    stylesheets={[tableStyle, `table {margin-bottom: 1lh;}`, boxStyle]}
+    html={`
+<table divide-="both" box-="square">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>both</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>box-</td>
+            <td>square</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="horizontal" box-="round">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>horizontal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>box-</td>
+            <td>round</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="vertical" box-="double">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>vertical</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>box-</td>
+            <td>double</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="none" box-="none">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>none</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>box-</td>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
+    `}
+/>
+
+## Reference
+
+### Properties
+
+- `--table-border-width`: The width of the table borders
+- `--table-border-color`: The color of the table borders
+
+**Note**: If used with `box-`, `--table-border-color` inherits the value of `--box-border-color`
+
+```css
+table {
+    --table-border-width: 1px;
+    --table-border-color: var(--foreground2);
+}
+```
+
+### Extending
+
+To extend the Table stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    table {
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+- All `<table>` elements
+- All `<tr>`, `<th>`, and `<td>` elements that are children of a `<table>`
+
+```css
+table {
+    tr {
+        th {
+            /* ... */
+        }
+        td {
+            /* ... */
+        }
+    }
+}
+```

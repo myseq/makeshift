@@ -1,0 +1,118 @@
+---
+layout: '@/layouts/Doc.astro'
+title: Radio
+---
+
+import Example from '@/components/Example.astro'
+import radioStyle from '@webtui/css/components/radio.css?raw'
+
+Displays a radio button
+
+<Example
+    stylesheets={[radioStyle]}
+    html={`<label>
+    <input type="radio" name="radio-group" />
+    Unchecked
+</label>
+<label>
+    <input type="radio" checked name="radio-group" />
+    Checked
+</label>`}
+/>
+
+## Import
+
+```css
+@import '@webtui/css/components/radio.css';
+```
+
+## Usage
+
+```html
+<label>
+    <input type="radio" />
+    Radio
+</label>
+```
+
+## Examples
+
+### `disabled`
+
+<Example
+    stylesheets={[radioStyle]}
+    html={`
+<label>
+    <input type="radio" disabled name="radio-group" />
+    Disabled
+</label>
+<label>
+    <input type="radio" checked disabled name="radio-group" />
+    Checked Disabled
+</label>
+`}
+/>
+
+## Reference
+
+### Properties
+
+- `--placeholder-content`: The content of the unchecked radio placeholder
+- `--placeholder-background`: The background color of the unchecked radio placeholder
+- `--placeholder-color`: The text color of the unchecked radio placeholder
+- `--checked-content`: The content of the radio button when checked
+- `--checked-background`: The background color of the radio button when checked
+- `--checked-color`: The text color of the radio button when checked
+
+<Example
+    stylesheets={[radioStyle]}
+    css={`
+        input[type='radio'].custom {
+            --placeholder-content: '< >';
+            --placeholder-background: var(--background2);
+            --placeholder-color: var(--foreground1);
+            --checked-content: 'O';
+            --checked-color: red;
+        }
+    `}
+    html={`
+<label>
+    <input type="radio" name="default" />
+    Default
+</label>
+<label>
+    <input type="radio" checked name="default" />
+    Default Checked
+</label><br/>
+<label>
+    <input type="radio" class="custom" name="custom" />
+    Custom
+</label>
+<label>
+    <input type="radio" checked class="custom" name="custom" />
+    Custom Checked
+</label>
+`}
+/>
+
+### Extending
+
+To extend the Radio stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    input[type='radio'] {
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+- All native `<input type="radio">` elements
+
+```css
+input[type='radio'] {
+    /* ... */
+}
+```
