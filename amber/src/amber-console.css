@@ -1,0 +1,91 @@
+/* ===========================================================================
+   Amber Console — a monochrome amber-terminal CSS framework
+   BSD-3-Clause licensed; see LICENSE. Fonts in fonts/ are SIL OFL 1.1; see
+   fonts/OFL-*.txt.
+   https://github.com/DutchDiederik/AmberConsole
+
+   NO VERSION NUMBER LIVES IN src/. package.json is the single source of truth;
+   scripts/build.mjs stamps it into the dist/ banners. A version written here
+   would be inlined into the bundle beside the generated one and drift on the
+   first release that forgets it.
+
+   This file is an @import list and nothing else. Every rule lives in one of the
+   files below, so you can drop any single component you do not need.
+
+   To embed inside an existing app rather than owning the page, swap
+   base/reset.css for base/reset-scoped.css and wrap your markup in .ac-root.
+   To skip the vendored webfonts, swap tokens/fonts.css for tokens/fonts-cdn.css.
+   Either way, rebuild: `npm run build`.
+   =========================================================================== */
+
+/* --- Tokens: the entire API. Override any of these at runtime. --- */
+@import "tokens/fonts.css";
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/spacing.css";
+@import "tokens/effects.css";
+
+/* Blink is law-2 emphasis rather than a simulation — every display technology
+   here blinks — and components/ depends on it, so it is base and not sim. */
+@import "base/blink.css";
+
+/* --- The screen simulations ---
+
+   ONE ORDERING RULE, AND ONLY ONE: sim/frame.css must come LAST. It holds the
+   shared stacking normalisation, the viewport anchoring and the
+   prefers-reduced-motion block, all of which override the three hardware files.
+   Move it earlier and the simulations paint through each other.
+
+   Everything above it can be reordered freely. sim/screen.css is first because
+   the z-index table it documents reads best before the files that spend it —
+   that is a reading order, not a cascade requirement.
+
+   The three in between are independent and any of them can simply be deleted.
+   That is the point of the split: afterglow alone is ~490 lines and a backdrop-
+   filter over the viewport, and a consumer who wants the look without the
+   persistence engine could not previously drop it. Selectors left behind in
+   screen.css and frame.css for a file you removed match nothing and cost
+   nothing. --- */
+@import "sim/screen.css";
+@import "sim/plasma.css";
+@import "sim/crt.css";
+@import "sim/afterglow.css";
+@import "sim/frame.css";
+
+/* --- Base --- */
+@import "base/reset.css";
+@import "base/layout.css";
+
+/* --- Components --- */
+@import "components/button.css";
+@import "components/nav.css";
+@import "components/setup.css";
+@import "components/tabs.css";
+@import "components/panel.css";
+@import "components/input.css";
+@import "components/select.css";
+@import "components/checkbox.css";
+@import "components/radio.css";
+@import "components/toggle.css";
+@import "components/statusbar.css";
+@import "components/readout.css";
+@import "components/badge.css";
+@import "components/banner.css";
+@import "components/rule.css";
+@import "components/table.css";
+@import "components/list.css";
+@import "components/dialog.css";
+@import "components/meter.css";
+@import "components/keypad.css";
+@import "components/spinner.css";
+@import "components/sweep.css";
+
+/* Classic is a second corner style, not a component, so it comes after every
+   component whose radius it re-cuts and whose halo it composes with — and still
+   before the environment overrides, so forced colors and print keep the last
+   word on the shadows it adds. */
+@import "components/classic.css";
+
+/* --- Environment overrides. Last, so they win. --- */
+@import "base/a11y.css";
+@import "base/print.css";

@@ -1,0 +1,207 @@
+/* ===========================================================================
+   Print
+
+   A console screenshot has to print legibly on a booth wall, so the whole
+   palette inverts to black on white by re-pointing the semantic tokens. Every
+   component keys off those tokens, so nothing else needs restating.
+
+   The 2px rules stay — they are the layout. Glow, bloom, scanlines and every
+   animation go, because they describe energized hardware and paper is not.
+
+   Literal hex is allowed here, in tokens/colors.css, and in the two sim/ files
+   that use #000 inside a mask-image — where the value is alpha rather than a
+   color. scripts/check-prohibitions.mjs enforces that list, and splitting
+   effects.css let it get shorter: the glow tokens no longer contain a hex.
+   =========================================================================== */
+
+@media print {
+  /* THE SELECTOR LIST IS THE FIX, AND IT HAS TO STAY THIS SHAPE.
+     `:root` alone is specificity (0,1,0). The palettes in tokens/colors.css are
+     `[data-ac-tech="crt"][data-ac-emitter="p3"]` — (0,2,0) — and a media query
+     adds NO specificity, so a plain `:root` here loses to every palette for the
+     four tokens they declare: --ac-screen, --ac-screen-raised, --ac-screen-well
+     and --ac-on-fill.
+     It lost silently and it lost HALF the palette, which is the dangerous shape.
+     --ac-ink, --ac-fill and --ac-stroke are declared at :root in colors.css, so
+     those inverted correctly and the inverse-video fills went solid black — over
+     text that stayed --ac-on-fill #1e0c00. Black on near-black, 1.05:1, on every
+     status strip, panel title, filled key and input on paper. The setup board
+     kept --ac-screen too and printed as a full page of solid ink.
+     Matching (0,2,0) and relying on this file being imported LAST is the same
+     contract the rest of the file already runs on — see the header. Anything
+     that beats the palettes works; nothing weaker does.
+
+     .ac-root IS THE FOURTH ENTRY AND IT IS NOT OPTIONAL. tokens/colors.css
+     declares the semantic aliases on `:root, .ac-root` so that a scoped embed
+     re-resolves them against its own palette. That rule sits on a CLOSER element
+     than this one, and proximity beats a same-weight declaration on an ancestor
+     — so without .ac-root here, `--ac-ink: var(--ac-emit-90)` on the wrapper
+     would win over `--ac-ink: #000` on :root and a scoped embed would print the
+     whole panel in amber on white. The two lists have to move together. */
+  :root,
+  .ac-root,
+  [data-ac-tech][data-ac-emitter],
+  [data-ac-gas] {
+    --ac-screen: #ffffff;
+    --ac-screen-raised: #f2f2f2;
+    --ac-screen-well: #ffffff;
+
+    --ac-ink: #000000;
+    --ac-ink-bright: #000000;
+    --ac-ink-dim: #333333;
+    --ac-ink-faint: #666666;
+    --ac-ink-trace: #999999;
+
+    --ac-fill: #000000;
+    --ac-fill-bright: #000000;
+    --ac-on-fill: #ffffff;
+
+    --ac-stroke: #000000;
+    --ac-stroke-dim: #666666;
+
+    --ac-glow-text: none;
+    /* Transparent rather than `none`, and the difference is load-bearing now
+       that components compose the halo with the key edge:
+       `var(--ac-glow-box), var(--ac-edge)` resolving to `none, …` is not a valid
+       shadow list, so the whole declaration is dropped. That happened to leave
+       `none` behind and print correctly — by way of an invalid declaration
+       rather than on purpose. Same value the forced-colors block in a11y.css
+       uses, for the same reason. */
+    --ac-glow-box: 0 0 0 transparent;
+    --ac-glow-box-dim: 0 0 0 transparent;
+    --ac-edge: 0 0 0 transparent;
+    --ac-edge-press: 0 0 0 transparent;
+
+    /* Every blink site at once — see the blink header in base/blink.css.
+       -force rather than -name so the CRT simulation, which declares -name on a
+       nearer ancestor, cannot reinstate a blink on paper. */
+    --ac-blink-force: none;
+
+    /* The de-energizing afterimage is a halo around a control that is no longer
+       lit — an argument about elapsed time, which paper does not have — and it
+       prints as an unexplained smudge. The scroll smear is the same claim about
+       a page that is not moving, in case one is captured mid-scroll. Both go
+       through their own tokens, so neither of the two selector lists that used
+       to be mirrored into this file is restated here at all. */
+    --ac-afterimage-display: none;
+    --ac-smear-filter: none;
+  }
+
+  /* .ac-bloom redefines the glow tokens on the frame itself, which is a closer
+     ancestor than :root and so wins for every descendant. Reset it here or the
+     whole page prints with an amber halo around the text. */
+  .ac-bloom {
+    --ac-glow-text: none;
+    --ac-glow-box: 0 0 0 transparent;
+    --ac-glow-box-dim: 0 0 0 transparent;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+    -webkit-font-smoothing: auto;
+  }
+
+  .ac-bloom::before,
+  .ac-crt::after,
+  .ac-scanlines::after,
+  .ac-retrace,
+  .ac-persist,
+  .ac-mesh,
+  /* The radar wake is a rotating light, and paper does not rotate — frozen, it
+     prints as an unexplained bright wedge across the face. Hiding it also keeps
+     the LAST blended element off the printed page, which matters more than it
+     looks: a single `mix-blend-mode` anywhere in the document promotes the
+     containing stacking context and costs SUBPIXEL TEXT ANTIALIASING for the
+     whole page. Every other overlay here was already hidden in print, so this
+     one arriving quietly turned every printed glyph grayscale. */
+  .ac-sweep__beam {
+    display: none;
+  }
+
+
+  /* A trailing bar is an argument about elapsed time, which paper does not have. */
+  .ac-afterglow .ac-meter__track::before {
+    display: none;
+  }
+
+  /* Paper holds an image indefinitely, which is the opposite problem. A hidden
+     element must print as absent, not as a 40%-opacity smudge over the live one. */
+  .ac-afterglow [hidden],
+  .ac-afterglow dialog:not([open]) {
+    transition: none;
+    filter: none;
+  }
+
+  /* Blanket, for the same reason as the reduced-motion block in
+     sim/frame.css: every decay is a descendant rule under .ac-afterglow and
+     outranks a plain reset, so catching them by name means missing the next one. */
+  .ac-afterglow *,
+  .ac-afterglow *::before,
+  .ac-afterglow *::after {
+    transition: none !important;
+  }
+
+
+  /* The spinner is not a blink site — it runs its own keyframe, so it is still
+     named here. Blink itself is switched off via --ac-blink-force above. */
+  .ac-spinner::before {
+    animation: none;
+    filter: none;
+  }
+
+  /* EVERY FILLED SURFACE NEEDS THIS, and the reason is that browsers print with
+     "background graphics" OFF by default: a background-color without
+     print-color-adjust: exact is simply dropped. So this list is not a
+     nice-to-have, it is the difference between a page that carries its state to
+     paper and one that does not — a set interlock bit prints as an EMPTY
+     square, a thrown switch as an empty box, a meter as an empty track.
+     Anything whose meaning is "this cell is lit" belongs here.
+
+     The visual suite cannot catch a gap in this list. Playwright's
+     emulateMedia({ media: "print" }) renders to a screen surface, which honors
+     backgrounds regardless — so console-1280-print.png shows filled interlocks
+     that a real printer would not. Check it by hand against a print preview. */
+
+  /* Inverse video — a blinking alarm is invisible on paper, so the ✳✳ glyphs
+     and the fill are the only things left carrying it. */
+  .ac-statusbar,
+  .ac-panel__barTitle,
+  .ac-dialog__title,
+  .ac-readout__label,
+  .ac-table th,
+  .ac-table__row--active td,
+  .ac-btn--filled,
+  .ac-btn[aria-pressed="true"],
+  .ac-tab--active,
+  .ac-tab[aria-selected="true"],
+  .ac-nav__link[aria-current="page"],
+  .ac-badge--filled,
+  .ac-banner--filled,
+  .ac-field--invalid .ac-input,
+  .ac-input[aria-invalid="true"],
+  /* Lit lamps and fills — the bit field is the densest state on the panel.
+     The thumb is listed unconditionally, not just when thrown: an OFF thumb
+     that prints as nothing leaves an empty track with no readable position. */
+  .ac-check input:checked,
+  .ac-radio input:checked,
+  .ac-toggle__thumb,
+  .ac-meter__bar,
+  /* The over-range track, which is inverse video like everything above it and
+     is the ONLY thing left saying "alarm" on paper — the blink that used to
+     carry it cannot print. Without this the track drops its background and an
+     alarmed meter prints as an ordinary one. See components/meter.css. */
+  .ac-meter--alarm .ac-meter__track {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .ac-screen {
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .ac-nav--sticky {
+    position: static;
+  }
+}

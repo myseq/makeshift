@@ -1,0 +1,65 @@
+/* ===========================================================================
+   Radio — the same indicator lamp, round.
+
+   :checked punches the ring gap with an inset --ac-screen shadow rather than
+   drawing a dot, so the lit area reads as one solid gas cell.
+
+   Markup: <label class="ac-radio"><input type="radio" name="mode"><span>Label</span></label>
+   =========================================================================== */
+
+.ac-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-family: var(--ac-font-terminal);
+  font-size: var(--ac-type-body);
+  line-height: 1;
+  color: var(--ac-ink);
+  text-shadow: var(--ac-glow-text);
+  text-transform: uppercase;
+  letter-spacing: var(--ac-tracking-body);
+  cursor: pointer;
+}
+
+.ac-radio input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  flex: none;
+  border: var(--ac-border-w) solid var(--ac-stroke);
+  box-shadow: var(--ac-glow-box);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ac-radio input:checked {
+  background: var(--ac-fill);
+  box-shadow: inset 0 0 0 3px var(--ac-screen), var(--ac-glow-box);
+}
+
+.ac-radio--disabled,
+.ac-radio:has(input:disabled) {
+  color: var(--ac-ink-faint);
+  text-shadow: none;
+  cursor: default;
+}
+.ac-radio--disabled input,
+.ac-radio input:disabled {
+  border-color: var(--ac-stroke-dim);
+  box-shadow: none;
+  cursor: default;
+}
+.ac-radio--disabled input:checked,
+.ac-radio input:disabled:checked {
+  background: var(--ac-ink-faint);
+  box-shadow: inset 0 0 0 3px var(--ac-screen);
+}
+
+.ac-radio input:focus-visible {
+  outline: 2px dashed var(--ac-ink-dim);
+  outline-offset: 3px;
+}

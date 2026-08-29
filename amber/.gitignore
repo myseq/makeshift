@@ -1,0 +1,41 @@
+node_modules/
+
+# Publish artifacts. `npm pack` drops amber-console-<version>.tgz in the repo
+# root — 180kb of the repo, committed back into the repo.
+*.tgz
+*.log
+
+# NEVER COMMIT THIS. `npm login` and `npm token` can write an auth token into a
+# project-local .npmrc, and committing one publishes a credential that can push
+# to this package. Ignored by default; if you ever need a checked-in .npmrc for
+# registry config, `git add -f .npmrc` after checking there is no token in it.
+.npmrc
+.env
+.env.*
+
+# Visual-regression run output — written only for a capture that FAILED, so it
+# can be eyeballed against its baseline. Throwaway; the next run rewrites it.
+test/visual/*.actual.png
+
+# scripts/make-assets.mjs unlinks this; it only survives a crashed run.
+docs/.make-assets.tmp.html
+
+# Local tool state, machine-specific
+.claude/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# NOTHING HERE IGNORES test/visual/baselines/, AND THAT IS DELIBERATE.
+#
+# A baseline IS the test. Ignoring one does not spare the repository the bytes,
+# it only spares them review — and it costs the suite the thing it exists for,
+# a fresh clone that can say whether the pages still render the way they did.
+# An ignored file is not reported as missing, so the gap is silent.
+#
+# The full set is committed as of 2.0. Adding a page means committing its
+# baselines with it.
