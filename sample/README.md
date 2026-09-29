@@ -7,5 +7,5 @@ This is a sample `README.md`.  <img align='right' src="lemon.png" width='240px'>
  - item 3
 
 
-<img src="lemon.png" width='200px'>
+<img src="mandarin.png" width='200px'>
 
