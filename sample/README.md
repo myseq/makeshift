@@ -8,9 +8,8 @@ It demonstrates how to use right-align to place a PNG at right-justified.
  - item 2
  - item 3
 
-
 <p align="center">
-<img src="citron.png" width="200">
+   <img src="citron.png" width="200">
 </p>
 
  * Left <img src="lemon.png" width='200px'>
