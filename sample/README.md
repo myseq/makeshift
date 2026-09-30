@@ -9,7 +9,9 @@ It demonstrates how to use right-align to place a PNG at right-justified.
  - item 3
 
 
-<img src="citron.png" width='200' style="display: block; margin: 0 auto;">
-<img src="citron.png" width="200" style="display: block; margin-left: auto;">
-<img align='right' src="lemon.png" width='200px'>
+ * Center <img src="citron.png" width='200' style="display: block; margin: 0 auto;">
+
+ * Center <img src="citron.png" width="200" style="display: block; margin-left: auto;">
+
+ * Left <img align='right' src="lemon.png" width='200px'>
 
