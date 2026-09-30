@@ -15,3 +15,6 @@ It demonstrates how to use right-align to place a PNG at right-justified.
 
  * Left <img align='right' src="lemon.png" width='200px'>
 
+<p align="center">
+<img src="citron.png" width="200">
+</p>
