@@ -16,15 +16,10 @@
 
 <h1>Generic Landing Page</h1>
 
-<h2>HTTP Referrer</h2>
+Simply a generic landing page.
 
-<!-- <p id="status">Checking referrer...</p> 
-<p>
-    <strong>Referrer:</strong>
-    <a id="referrer" target="_blank" rel="noopener noreferrer"></a>
-    <div id="status">Checking referrer...</div>
-</p>
--->
+
+<h2>HTTP Referrer</h2>
 
 <div class="label" id="status">HTTP Referrer (checking)</div>
 <div class="box" id="httpreferrer"><a id="referrer" target="_blank" rel="noopener noreferrer">Loading...</a></div>
@@ -39,6 +34,23 @@
 
 <div class="label">navigator.platform</div>
 <div class="box" id="platform">Loading...</div>
+
+<script>
+        const referrer = document.referrer;
+        const link = document.getElementById("referrer");
+        const status = document.getElementById("status");
+
+        if (referrer) {
+            link.textContent = referrer;
+            link.href = referrer;
+            status.textContent = "Referrer [detected]";
+        } else {
+            link.textContent = "None";
+            link.removeAttribute("href");
+            status.textContent = "Referrer [No information was provided]";
+        }
+</script>
+
 
 <h2>Basic Browser Detection</h2>
 
@@ -57,27 +69,12 @@
     </tr>
 </table>
 
+
 <h2>Modern User-Agent Client Hints</h2>
 
 <div class="box" id="uach">
     Not supported by this browser.
 </div>
-
-    <script>
-        const referrer = document.referrer;
-        const link = document.getElementById("referrer");
-        const status = document.getElementById("status");
-
-        if (referrer) {
-            link.textContent = referrer;
-            link.href = referrer;
-            status.textContent = "Referrer [detected]";
-        } else {
-            link.textContent = "None";
-            link.removeAttribute("href");
-            status.textContent = "Referrer [No information was provided]";
-        }
-    </script>
 
 <script>
 (function () {
