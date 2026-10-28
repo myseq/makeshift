@@ -34,10 +34,6 @@ body {
     margin-bottom: 8px;
 }
 
-h1 {
-    font-size: 24px;
-}
-
 table {
     border-collapse: collapse;
     margin-left: 20px;
@@ -51,5 +47,6 @@ td, th {
 }
 
 th { background: #ddd; }
+td { font-family: Consolas, "Courier New", monospace; }
 
 
