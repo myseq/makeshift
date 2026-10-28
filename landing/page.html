@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landed</title>
+
+    <!-- Useful when testing IE document modes -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            color: #222;
+        }
+
+        .box {
+            border: 1px solid #999;
+            background: #f5f5f5;
+            padding: 15px;
+            margin-bottom: 20px;
+            word-break: break-all;
+        }
+
+        .label {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>HTTP Referrer</h2>
+
+    <p id="status">Checking referrer...</p>
+
+    <p>
+        <strong>Referrer:</strong>
+        <a id="referrer" target="_blank" rel="noopener noreferrer"></a>
+    </p>
+
+<h1>Browser User Agent Test</h1>
+
+<div class="label">navigator.userAgent</div>
+<div class="box" id="ua">Loading...</div>
+
+<div class="label">navigator.appVersion</div>
+<div class="box" id="appversion">Loading...</div>
+
+<div class="label">navigator.platform</div>
+<div class="box" id="platform">Loading...</div>
+
+<h2>Basic Browser Detection</h2>
+
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Result</th>
+    </tr>
+    <tr>
+        <td>Detected Browser</td>
+        <td id="browser"></td>
+    </tr>
+    <tr>
+        <td>IE Document Mode</td>
+        <td id="documentmode"></td>
+    </tr>
+</table>
+
+<h2>Modern User-Agent Client Hints</h2>
+
+<div class="box" id="uach">
+    Not supported by this browser.
+</div>
+
+    <script>
+        const referrer = document.referrer;
+        const link = document.getElementById("referrer");
+        const status = document.getElementById("status");
+
+        if (referrer) {
+            link.textContent = referrer;
+            link.href = referrer;
+            status.textContent = "Referrer detected.";
+        } else {
+            link.textContent = "None";
+            link.removeAttribute("href");
+            status.textContent = "No referrer information was provided.";
+        }
+    </script>
+
+<script>
+(function () {
+
+    var ua = navigator.userAgent;
+
+    document.getElementById("ua").innerHTML = ua;
+    document.getElementById("appversion").innerHTML =
+        navigator.appVersion || "Not available";
+    document.getElementById("platform").innerHTML =
+        navigator.platform || "Not available";
+
+    /*
+     * Browser detection
+     * Kept deliberately simple so the page also works
+     * with old Internet Explorer JavaScript engines.
+     */
+
+    var browser = "Unknown";
+
+    if (ua.indexOf("MSIE 7.0") !== -1) {
+        browser = "Internet Explorer 7";
+    }
+    else if (ua.indexOf("MSIE") !== -1) {
+        browser = "Internet Explorer";
+    }
+    else if (ua.indexOf("Trident/") !== -1) {
+        browser = "Internet Explorer 11 / IE Mode";
+    }
+    else if (ua.indexOf("Edg/") !== -1) {
+        browser = "Microsoft Edge";
+    }
+    else if (ua.indexOf("Chrome/") !== -1) {
+        browser = "Google Chrome";
+    }
+
+    document.getElementById("browser").innerHTML = browser;
+
+    /*
+     * IE exposes document.documentMode.
+     *
+     * This is useful when Edge IE mode is emulating
+     * an old IE document mode.
+     */
+
+    if (document.documentMode) {
+        document.getElementById("documentmode").innerHTML =
+            "IE" + document.documentMode +
+            " document mode (document.documentMode = " +
+            document.documentMode + ")";
+    }
+    else {
+        document.getElementById("documentmode").innerHTML =
+            "Not an IE document mode";
+    }
+
+    /*
+     * Modern User-Agent Client Hints.
+     * Old IE will simply skip this block.
+     */
+
+    if (navigator.userAgentData) {
+
+        var brands = navigator.userAgentData.brands;
+        var output = "";
+
+        for (var i = 0; i < brands.length; i++) {
+            output += brands[i].brand +
+                      " " +
+                      brands[i].version +
+                      "<br>";
+        }
+
+        output += "<br>Platform: " +
+                  navigator.userAgentData.platform;
+
+        output += "<br>Mobile: " +
+                  navigator.userAgentData.mobile;
+
+        document.getElementById("uach").innerHTML = output;
+    }
+
+})();
+</script>
+
+</body>
+</html>
+
+
+
