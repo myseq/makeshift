@@ -258,7 +258,7 @@
           <label id="backgroundLabel" for="backgroundInput">BACKGROUND COLOR</label>
           <div class="color-input-row">
             <input class="text-input" id="backgroundInput" value="#FFFFFF" placeholder="#FFFFFF or rgb(255, 255, 255)" spellcheck="false">
-            <input class="native-picker" id="backgroundPicker" type="color" value="#ffffff" aria-label="Choose background color">
+            <input class="native-picker" id="backgroundPicker" type="color" value="#3e3e3e" aria-label="Choose background color">
           </div>
           <p class="converted-value" id="backgroundConverted"></p>
           <p class="error" id="backgroundError" aria-live="polite"></p>
@@ -277,7 +277,7 @@
   <script>
     const defaults = {
       background: "#3e3e3e",
-      foregrounds: ["#e7ff00", "rgb(231, 255, 00)", "#efff00"]
+      foregrounds: ["#e7ff00", "#dfff00", "#efff00"]
     };
 
     let lastValidBackground = defaults.background;
