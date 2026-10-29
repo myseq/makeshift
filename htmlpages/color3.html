@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Comparator</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      /*
+      background: #f8fafc;
+      color: #0f172a;  
+      */
+      background: #f5f5f5; /* my html background */
+      color: #3e3e3e; /* my html color */
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f5f5f5; /* my html background */
+    }
+
+    button, input { font: inherit; }
+
+    .page {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.9rem, 4vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .subtitle {
+      margin: 10px 0 0;
+      color: #b2b2b2;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 15px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      background: white;
+      color: #334155;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgb(15 23 42 / 0.05);
+    }
+
+    .button:hover { background: #f8fafc; }
+    .button:focus-visible, input:focus-visible {
+      outline: 3px solid rgb(59 130 246 / 0.25);
+      outline-offset: 2px;
+    }
+
+    .background-panel, .card, .note {
+      border: 1px solid #e2e8f0;
+      background: #3e3e3e;
+      box-shadow: 0 2px 8px rgb(15 23 42 / 0.05);
+    }
+
+    .background-panel {
+      margin-bottom: 22px;
+      padding: 20px;
+      border-radius: 18px;
+    }
+
+    .background-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 130px;
+      align-items: end;
+      gap: 18px;
+    }
+
+    label, .card-title {
+      display: block;
+      margin-bottom: 9px;
+      color: #e4e4e4;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.055em;
+    }
+
+    .color-input-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 48px;
+      gap: 10px;
+    }
+
+    .text-input {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      color: #0f172a;
+      background: white;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .text-input.invalid { border-color: #ef4444; }
+
+    .native-picker {
+      width: 48px;
+      height: 44px;
+      padding: 3px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .converted-value {
+      min-height: 18px;
+      margin: 8px 0 0;
+      color: #b2b2b2;
+      font-size: 0.78rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .error {
+      min-height: 18px;
+      margin: 7px 0 0;
+      color: #dc2626;
+      font-size: 0.82rem;
+    }
+
+    .background-preview {
+      height: 64px;
+      border: 1px solid #cbd5e1;
+      border-radius: 13px;
+      transition: background-color 180ms ease;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .comparison-area {
+      display: grid;
+      place-items: center;
+      min-height: 270px;
+      padding: 30px;
+      transition: background-color 180ms ease;
+    }
+
+    .foreground-swatch {
+      width: min(150px, 65%);
+      aspect-ratio: 1;
+      border: 1px solid rgb(15 23 42 / 0.2);
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgb(15 23 42 / 0.2);
+      transition: background-color 180ms ease;
+    }
+
+    .card-body { padding: 18px; }
+
+    .values {
+      display: grid;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .value-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      padding: 10px 11px;
+      border: 0;
+      border-radius: 10px;
+      background: #f8fafc;
+      color: #334155;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .value-button:hover { background: #f1f5f9; }
+
+    .value-label {
+      margin-right: 8px;
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+
+    .value-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+    }
+
+    .copy-status {
+      flex: 0 0 auto;
+      color: #64748b;
+      font-size: 0.74rem;
+    }
+
+    .note {
+      margin-top: 22px;
+      padding: 13px 16px;
+      border-radius: 13px;
+      color: #b2b2b2;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .cards { grid-template-columns: 1fr; }
+      .comparison-area { min-height: 230px; }
+      .foreground-swatch { width: 145px; }
+    }
+
+    @media (max-width: 600px) {
+      .page { width: min(100% - 22px, 1160px); padding: 26px 0; }
+      .header { align-items: stretch; flex-direction: column; }
+      .button { width: 100%; }
+      .background-grid { grid-template-columns: 1fr; }
+      .background-preview { height: 58px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div>
+        <h1>Color Comparator</h1>
+        <p class="subtitle">Compare three foreground colors against the same background color.</p>
+      </div>
+      <button class="button" id="resetButton" type="button" aria-label="Reset all colors">↻ Reset</button>
+    </header>
+
+    <section class="background-panel" aria-labelledby="backgroundLabel">
+      <div class="background-grid">
+        <div>
+          <label id="backgroundLabel" for="backgroundInput">BACKGROUND COLOR</label>
+          <div class="color-input-row">
+            <input class="text-input" id="backgroundInput" value="#FFFFFF" placeholder="#FFFFFF or rgb(255, 255, 255)" spellcheck="false">
+            <input class="native-picker" id="backgroundPicker" type="color" value="#3e3e3e" aria-label="Choose background color">
+          </div>
+          <p class="converted-value" id="backgroundConverted"></p>
+          <p class="error" id="backgroundError" aria-live="polite"></p>
+        </div>
+        <div class="background-preview" id="backgroundPreview" aria-label="Background color preview"></div>
+      </div>
+    </section>
+
+    <section class="cards" id="colorCards" aria-label="Foreground color comparison"></section>
+
+    <div class="note">
+      The large area behind every foreground swatch uses the same background color, so differences in color perception are easier to compare.
+    </div>
+  </main>
+
+  <script>
+    const defaults = {
+      background: "#3e3e3e",
+      foregrounds: ["#e7ff00", "#ffe700", "#ffbf00"]
+    };
+
+    let lastValidBackground = defaults.background;
+
+    function parseColor(input) {
+      const value = input.trim();
+      let match = value.match(/^#?([0-9a-f]{6})$/i);
+
+      if (match) {
+        const hex = `#${match[1].toUpperCase()}`;
+        const r = parseInt(match[1].slice(0, 2), 16);
+        const g = parseInt(match[1].slice(2, 4), 16);
+        const b = parseInt(match[1].slice(4, 6), 16);
+        return { css: hex, hex, rgb: `rgb(${r}, ${g}, ${b})` };
+      }
+
+      match = value.match(/^#?([0-9a-f]{3})$/i);
+      if (match) {
+        const expanded = match[1].split("").map(character => character + character).join("");
+        return parseColor(`#${expanded}`);
+      }
+
+      match = value.match(/^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/i);
+      if (match) {
+        const [r, g, b] = match.slice(1).map(Number);
+        if ([r, g, b].every(channel => channel >= 0 && channel <= 255)) {
+          const hex = `#${[r, g, b].map(channel => channel.toString(16).padStart(2, "0")).join("").toUpperCase()}`;
+          return { css: `rgb(${r}, ${g}, ${b})`, hex, rgb: `rgb(${r}, ${g}, ${b})` };
+        }
+      }
+
+      return null;
+    }
+
+    function createCard(index, initialValue) {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="comparison-area" id="comparisonArea${index}">
+          <div class="foreground-swatch" id="swatch${index}" aria-label="Foreground color ${index + 1} preview"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">FOREGROUND COLOR ${index + 1}</div>
+          <div class="color-input-row">
+            <input class="text-input" id="foregroundInput${index}" value="${initialValue}" placeholder="#FF5733 or rgb(255, 87, 51)" spellcheck="false">
+            <input class="native-picker" id="foregroundPicker${index}" type="color" aria-label="Choose foreground color ${index + 1}">
+          </div>
+          <p class="error" id="foregroundError${index}" aria-live="polite"></p>
+          <div class="values" id="values${index}">
+            <button class="value-button" type="button" data-format="hex"><span><span class="value-label">HEX</span><span class="value-code"></span></span><span class="copy-status">Copy</span></button>
+            <button class="value-button" type="button" data-format="rgb"><span><span class="value-label">RGB</span><span class="value-code"></span></span><span class="copy-status">Copy</span></button>
+          </div>
+        </div>`;
+
+      document.getElementById("colorCards").appendChild(card);
+
+      const input = document.getElementById(`foregroundInput${index}`);
+      const picker = document.getElementById(`foregroundPicker${index}`);
+
+      input.addEventListener("input", () => updateForeground(index));
+      picker.addEventListener("input", () => {
+        input.value = picker.value.toUpperCase();
+        updateForeground(index);
+      });
+
+      card.querySelectorAll(".value-button").forEach(button => {
+        button.addEventListener("click", async () => {
+          const value = button.querySelector(".value-code").textContent;
+          try {
+            await navigator.clipboard.writeText(value);
+            const status = button.querySelector(".copy-status");
+            status.textContent = "Copied";
+            setTimeout(() => status.textContent = "Copy", 900);
+          } catch {
+            window.prompt("Copy this color value:", value);
+          }
+        });
+      });
+
+      updateForeground(index);
+    }
+
+    function updateForeground(index) {
+      const input = document.getElementById(`foregroundInput${index}`);
+      const picker = document.getElementById(`foregroundPicker${index}`);
+      const parsed = parseColor(input.value);
+      const error = document.getElementById(`foregroundError${index}`);
+      const values = document.getElementById(`values${index}`);
+      const swatch = document.getElementById(`swatch${index}`);
+
+      input.classList.toggle("invalid", !parsed);
+      error.textContent = parsed ? "" : "Enter a valid HEX or RGB color.";
+      values.hidden = !parsed;
+
+      if (!parsed) {
+        swatch.style.backgroundColor = "#CBD5E1";
+        return;
+      }
+
+      swatch.style.backgroundColor = parsed.css;
+      picker.value = parsed.hex.toLowerCase();
+      values.querySelector('[data-format="hex"] .value-code').textContent = parsed.hex;
+      values.querySelector('[data-format="rgb"] .value-code').textContent = parsed.rgb;
+    }
+
+    function updateBackground() {
+      const input = document.getElementById("backgroundInput");
+      const picker = document.getElementById("backgroundPicker");
+      const parsed = parseColor(input.value);
+      const error = document.getElementById("backgroundError");
+      const converted = document.getElementById("backgroundConverted");
+
+      input.classList.toggle("invalid", !parsed);
+      error.textContent = parsed ? "" : "Enter a valid HEX or RGB background color.";
+
+      if (parsed) {
+        lastValidBackground = parsed.css;
+        picker.value = parsed.hex.toLowerCase();
+        converted.textContent = `${parsed.hex} · ${parsed.rgb}`;
+      } else {
+        converted.textContent = "The last valid background remains in use.";
+      }
+
+      document.getElementById("backgroundPreview").style.backgroundColor = lastValidBackground;
+      document.querySelectorAll(".comparison-area").forEach(area => {
+        area.style.backgroundColor = lastValidBackground;
+      });
+    }
+
+    function resetColors() {
+      const backgroundInput = document.getElementById("backgroundInput");
+      backgroundInput.value = defaults.background;
+      lastValidBackground = defaults.background;
+
+      defaults.foregrounds.forEach((value, index) => {
+        document.getElementById(`foregroundInput${index}`).value = value;
+        updateForeground(index);
+      });
+      updateBackground();
+    }
+
+    defaults.foregrounds.forEach((color, index) => createCard(index, color));
+
+    document.getElementById("backgroundInput").addEventListener("input", updateBackground);
+    document.getElementById("backgroundPicker").addEventListener("input", event => {
+      document.getElementById("backgroundInput").value = event.target.value.toUpperCase();
+      updateBackground();
+    });
+    document.getElementById("resetButton").addEventListener("click", resetColors);
+
+    updateBackground();
+  </script>
+</body>
+</html>
